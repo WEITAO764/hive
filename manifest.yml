@@ -1,7 +1,5 @@
+---
 applications:
-  - path: .
-    name: hive764
-    environment_json: {}
-    memory: 1024M
-    instances: 1
-    disk_quota: 1024M
+- name:    hive764
+  random-route: true
+  memory:  128M
