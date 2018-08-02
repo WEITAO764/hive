@@ -1,2 +1,8 @@
 node_modules
 npm-debug.log
+.idea/misc.xml
+.idea/hive.iml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/workspace.xml
+package-lock.json
