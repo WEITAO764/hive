@@ -1,8 +1,10 @@
-# Node.js Cloudant Sample
+# The project is for DEAKIN #HIVE PROJECT
+
+# IBM Node.js SDK Service
 
 This application demonstrates how to use the Bluemix Cloudant NoSQL DB service.  It helps users organize their favorite files. The UI talks to a RESTful Express CRUD backend API.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/nodejs-cloudant)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WEITAO764/hive)
 
 ## Run the app locally
 
