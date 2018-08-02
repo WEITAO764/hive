@@ -1,11 +1,10 @@
----
-declared-services: 
-  sample-nodejs-cloudant-cloudantNoSQLDB:
-    label: cloudantNoSQLDB 
-    plan: Lite 
 applications:
-- name: sample-nodejs-cloudant
-  random-route: true
-  memory: 256M
-  services:
-  - sample-nodejs-cloudant-cloudantNoSQLDB
+  - path: .
+    name: hive764
+    environment_json: {}
+    memory: 1024M
+    instances: 1
+    disk_quota: 1024M
+    services:
+      - availability-monitoring-auto
+      - hive764-cloudantNoSQLDB
