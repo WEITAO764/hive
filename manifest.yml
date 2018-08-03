@@ -2,4 +2,4 @@
 applications:
 - name:    hive764
   random-route: true
-  memory:  512M
+  memory:  256M
