@@ -1,6 +1,20 @@
 var express = require("express"),
     app = express();
+var mysql = require('mysql');
 var port = process.env.PORT || 8080;
+
+/* Database Connection */
+var con = mysql.createConnection({
+    host: "sl-us-south-1-portal.30.dblayer.com",
+    port: "52603",
+    user: "admin",
+    password: "OKVUNZLWUSILFSNB"
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
 
 /* Default Route. Static middleware */
 app.use(express.static(__dirname + '/public'));
