@@ -6,3 +6,4 @@ npm-debug.log
 .idea/modules.xml
 .idea/workspace.xml
 package-lock.json
+.idea/jsLibraryMappings.xml
