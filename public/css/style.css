@@ -39,7 +39,7 @@ Primary use:    MultiPurpose Template
     15.3. Works full view
 16. Banner section
 17. Testimonial
-    18.1. Logotypes
+    18.1.types
 18. Post previews (news section)
 19. Newsletter
 20. Contact section
@@ -1465,7 +1465,7 @@ a.bg-video-button-muted{
     display: table-cell;
     vertical-align: middle;
     max-width: 118px;
-    height: 75px;
+    height: 60px;
     
     -webkit-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);  
     -moz-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000); 
