@@ -1,6 +1,9 @@
 var express = require("express"),
     app = express();
 var mysql = require('mysql');
+var cookieParser = require('cookie-parser');
+var bodyParser = require("body-parser");
+var csrf = require('csurf');
 var port = process.env.PORT || 8080;
 
 /* Database Connection */
@@ -12,9 +15,12 @@ var con = mysql.createConnection({
     database: "hivedb"
 });
 con.connect();
-var bodyParser = require("body-parser");
+// setup route middlewares
+var csrfProtection = csrf({ cookie: true });
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 var encrypt = require('./library/encryption');
 //console.log(encrypt.sha1hash("password"));
 /* Default Route. Static middleware */
@@ -24,15 +30,19 @@ app.use(express.static(__dirname + '/public/backend'));
 /* Call Login Page
 *  Note: The default backend should check session status, if fail (unlogin), then should go to here.
 * */
-app.get("/login", function (request, response) {
+app.get("/login", csrfProtection, function (request, response) {
     response.sendFile(__dirname + '/public/backend/login.html');
 });
 
-app.post('/loginsubmit', function (req, res) {
+app.post('/loginsubmit',csrfProtection, function (req, res) {
     //Check the db if login confirmed
     //1. Get rid of BS submit
     //2. Return
     //console.log(req.body.username);
+    if(req.body.constructor === Object && Object.keys(req.body).length === 0) {
+        //BS SUBMIT
+        res.sendFile(__dirname + '/public/backend/login.html');
+    }
     var logintype = req.body.logintype;
     var username = req.body.username;
     var password = encrypt.sha1hash(req.body.password);
@@ -42,8 +52,8 @@ app.post('/loginsubmit', function (req, res) {
     {
         con.query('SELECT * from patients WHERE username = \"' + username + "\" AND password = \"" + password + "\"", function (err, rows, fields) {
             if (!err) {
-                console.log(rows[0]);
-                if (rows[0] === username) {
+                //console.log(rows[0]);
+                if (rows[0].username === username) {
                     //Login
                 }
                 else {
