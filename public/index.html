@@ -1,1242 +1,987 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
 <head>
-    <title>HIVE - Advanced Online Diagnosis Platform</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <meta name="author" content="WEI TAO">
-    <!--[if IE]>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>HIVE - Online Diagnose Platform</title>
+    <meta name="description" content="HIVE is a platform for online diagnose of patients. It supports live chat and video conferencing. It has purpose oriented design, responsive layout">
+    <meta name="keywords" content="doctor, diagnose, treatment, patient, appointment, booking, live chat">
+    <meta name="author" content="themesparagon.com">
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style-responsive.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/vertical-rhythm.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="style.css">
 
+    <!-- Favicon and touch icons  -->
+    <link rel="shortcut icon" href="assets/icon/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/icon/apple-touch-icon-158-precomposed.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body class="appear-animate">
 
-<!-- Page Loader -->
-<div class="page-loader">
-    <div class="loader">Loading...</div>
+<body class="header-style-1 menu-has-search no-sidebar no-padding-content">
+
+      <!-- Modal Register-->
+      <div class="modal fade" id="modalregister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color:#BEBEBE;">
+              <h5 class="modal-title" id="exampleModalLongTitle" style="color:#fff;">Register</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form method="POST">
+                            <div class="form-group">
+                              <label>Name <span class="req">*</span></label>
+                              <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Address <span class="req">*</span></label>
+                                <input type="text" class="form-control" id="address">
+                            </div>
+                            <div class="form-group">
+                                    <label>Phone <span class="req">*</span></label>
+                                    <input type="text" class="form-control" id="phone">
+                            </div>
+                            <div class="form-group">
+                              <label>Email <span class="req">*</span></label>
+                              <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Password <span class="req">*</span></label>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password <span class="req">*</span></label>
+                                <input type="password" class="form-control" id="confirmpassword">
+                            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="wprt-button">Reset</button>
+              <button type="submit" class="wprt-button">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal SignIn-->
+      <div class="modal fade" id="modalsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" style="background-color:#BEBEBE;">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="color:#fff;">Sign In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                              <form method="POST">
+                                      <div class="form-group">
+                                        <label>Email <span class="req">*</span></label>
+                                        <input type="text" class="form-control" id="email">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Password <span class="req">*</span></label>
+                                          <input type="password" class="form-control" id="password">
+                                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="reset" class="wprt-button">Reset</button>
+                        <button type="submit" class="wprt-button">Sign In</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+<div id="wrapper" class="animsition">
+<div id="page" class="clearfix">
+<!-- Site Header Wrap -->
+<div id="site-header-wrap">
+    <!-- Top Bar -->
+    <div id="top-bar" class="style-1">
+        <div id="top-bar-inner" class="wprt-container">
+            <div class="top-bar-inner-wrap">
+                <div class="top-bar-menu">
+                    <!--<ul class="top-bar-nav">
+                        <li><a href="#">FAQS</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>-->
+                </div><!-- /.top-bar-content -->
+
+                <div class="top-bar-socials">
+                        <div data-toggle="modal" data-target="#modalregister" ><a href="#" class="wprt-button" style="padding:5px 10px; margin-right:50px;float:right;">
+                                <span class="fa fa-user" aria-hidden="true">&nbsp;</span>Register</a></div>
+                        <div data-toggle="modal" data-target="#modalsignin"><a href="#" class="wprt-button" style="padding:5px 10px; margin-right:10px; float:right;">
+                                <span class="fa fa-lock" aria-hidden="true">&nbsp;</span>Sign In</a></div>
+                   <!-- <div class="icons">
+                        <a href="#" title="Twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                        <a href="#" title="Facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                        <a href="#" title="Linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+                        <a href="#" title="Google+"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+                        <a href="#" title="Skype"><span class="fa fa-skype" aria-hidden="true"></span></a>
+                    </div>-->
+                </div><!-- /.top-bar-socials -->
+            </div>
+        </div>
+    </div><!-- #top-bar -->
+
+    <!-- Header -->
+    <header id="site-header">
+        <div id="site-header-inner" class="wprt-container">
+            <div class="wrap-inner">          
+                <div id="site-logo" class="clearfix">
+                    <div id="site-logo-inner">
+                        <a href="index.html" title="HIVE" rel="home" class="main-logo">
+                            <img src="assets/img/logo.png" alt="HIVE" data-retina="assets/img/logo@2x.png" width="50" height="20" data-width="50" data-height="20"
+                            style="width:45px; height: 48px;"><span style="position: relative; top:10px;left:10px;font-size:16px;">HIVE</span>
+                        </a>
+                    </div>
+                </div><!-- /#site-logo -->
+
+                <div class="mobile-button"><span></span></div><!-- //mobile menu button -->
+
+                <nav id="main-nav" class="main-nav">
+                    <ul class="menu">
+                        <li  class="current-menu-item"><a href="index.html">Home</a>
+                        </li>
+                        <li><a href="#about">About</a>
+                        </li> 
+                        <li class="menu-item-has-children"><a href="#services">Services</a>
+                            <ul class="sub-menu">
+                                <li><a href="#appointment">Booking</a></li>       
+                                <li><a href="billing.html">Billing</a></li>   
+                                <li><a href="livechat.html">Diagnose</a></li>                          
+                            </ul>
+                        </li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="#appointment">Appointment</a></li>  
+                        <li><a href="timetable">Availability</a></li>                            
+                    </ul>
+                </nav><!-- /#main-nav -->
+
+            </div>
+        </div><!-- /#site-header-inner -->
+    </header><!-- /#site-header -->
+</div><!-- /#site-header-wrap -->
+
+<!-- Slider -->
+<div class="rev_slider_wrapper fullwidthbanner-container">
+    <div id="rev-slider1" class="rev_slider fullwidthabanner">
+        <ul>
+            <!-- Slide 1 -->
+            <li data-transition="random">
+                <!-- Main Image -->
+                <img src="assets/img/slider/slider-1.jpg" alt="image" data-bgposition="center center" data-no-retina>
+                <!-- Layers -->
+                <div class="tp-caption tp-resizeme text-white text-left font-heading font-weight-600"
+                    data-x="['left','left','left','center']" data-hoffset="['30','30','30','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['-50','-50','-50','-40']"
+                    data-fontsize="['60','60','60','35']"
+                    data-lineheight="['72','72','72','40']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="700" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    Tired Of Visiting <br>
+                    Doctors???
+                </div>
+                <!--<div class="tp-caption text-left"
+                    data-x="['left','left','left','center']" data-hoffset="['30','30','30','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['100','100','100','90']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    <a href="#" class="wprt-button big">MAKE AN OPPOINTMENT</a>
+                </div>
+
+                <div class="tp-caption text-left none-on-mobi"
+                    data-x="['left','left','left','center']" data-hoffset="['300','300','300','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['100','100','100','110']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    <a href="#" class="wprt-button big">DOCTORS TIMETABLE</a>
+                </div>-->
+            </li>
+            <!-- End Slide 1 -->
+
+            <!-- Slide 2 -->
+            <li data-transition="random">
+                <!-- Main Image -->
+                <img src="assets/img/slider/slider-2.jpg" alt="image" data-bgposition="center center" data-no-retina>
+                <!-- Layers -->
+                <div class="tp-caption tp-resizeme text-white text-left font-heading font-weight-600"
+                    data-x="['left','left','left','center']" data-hoffset="['30','30','30','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['-50','-50','-50','-40']"
+                    data-fontsize="['60','60','60','35']"
+                    data-lineheight="['72','72','72','40']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="700" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    Welcome To HIVE <br>
+                    <span style="font-size: 40px;">A Complete Online Diagnose</span><br>
+                    <span style="font-size: 30px;">You Can Trust!!!</span>
+                </div>
+                <div class="tp-caption text-left"
+                    data-x="['left','left','left','center']" data-hoffset="['30','30','30','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['100','100','100','90']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    <a href="#appointment" class="wprt-button big">MAKE AN OPPOINTMENT</a>
+                </div>
+
+                <div class="tp-caption text-left none-on-mobi"
+                    data-x="['left','left','left','center']" data-hoffset="['300','300','300','0']"
+                    data-y="['middle','middle','middle','middle']" data-voffset="['100','100','100','110']"
+                    data-width="full"
+                    data-height="none"
+                    data-whitespace="normal"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];" 
+                    data-mask_out="x:inherit;y:inherit;" 
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on">
+                    <a href="timetable.html" class="wprt-button big">CHECK AVAILABILITY</a>
+                </div>
+            </li>
+            <!-- End Slide 2 -->
+        </ul>
+    </div>
 </div>
-<!-- End Page Loader -->
+<!-- / Slider -->
 
-<!-- Page Wrap -->
-<div class="page" id="top">
+<!-- Main Content -->
+<main id="main-content">
+    <div id="content-wrap">
+        <div id="site-content" class="site-content clearfix">
+            <div id="inner-content" class="inner-content-wrap">
+                <div class="page-content">
+                    <!-- Welcome -->
+                    <div class="row-welcome">
+                        <div class="wprt-container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
 
-    <!-- Home Section -->
-    <section class="home-section bg-gray bg-light-alfa-50 parallax-2"
-             data-background="images/full-width-images/section-bg-7.jpg" id="home">
-        <div class="js-height-full">
+                                    <div class="wprt-animation-block" data-animate="fadeInUp" data-duration="1s" data-delay="0.2s" data-position="75%">
+                                        <div class="wprt-content-box style-1 text-white bg-dark-2 has-move-content has-paddings" data-margin-top="-187" data-padding-top="36" data-padding-right="36" data-padding-bottom="52" data-padding-left="36">
+                                            <div class="inner">
+                                                <h2 class="heading font-size-18 text-white margin-bottom-22">APPOINTMENT</h2>
 
-            <!-- Hero Content -->
-            <div class="home-content container">
-                <div class="home-text">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur dolor.</p>
 
-                    <h1 class="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
-                        Next Gen Online Diagnosis
-                    </h1>
+                                                <div class="wprt-spacer clearfix" data-desktop="30" data-mobi="30" data-smobi="30"></div>
 
-                    <h2 class="hs-line-14 font-alt mb-50 mb-xs-30">
-                        Hive Platform
-                    </h2>
+                                                <!--<p class="phone font-size-24 text-white">+86-123-456-789</p>-->
 
-                    <div class="local-scroll">
-                        <a href="#about" class="btn btn-mod btn-medium btn-round hidden-xs">See More</a>
-                        <span class="hidden-xs">&nbsp;</span>
-                        <a href="/login" class="btn btn-mod btn-medium btn-round">Get Start</a>
+                                                <div class="wprt-spacer clearfix" data-desktop="30" data-mobi="30" data-smobi="30"></div>
+
+                                                <div class="wprt-btn">
+                                                    <a class="wprt-button small outline light" href="#appointment">BOOK NOW</a>
+                                                </div>
+                                            </div>                                     
+                                        </div><!-- /.wprt-content-box -->
+                                    </div><!-- /.wprt-animation-block -->
+
+                                    <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
+                                </div><!-- /.col-md-4 -->
+
+                                <div class="col-md-4">
+                                    <div class="wprt-animation-block" data-animate="fadeInUp" data-duration="1s" data-delay="0.4s" data-position="75%">
+                                        <div class="wprt-content-box style-1 bg-accent has-move-content text-white has-paddings" data-margin-top="-187" data-padding-top="36" data-padding-right="36" data-padding-bottom="52" data-padding-left="36">
+                                            <div class="inner">
+                                                <h2 class="heading font-size-18 text-white">BILLING</h2>
+
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis. Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur dolor.</p>
+                                                <div class="wprt-spacer clearfix" data-desktop="53" data-mobi="53" data-smobi="53"></div>
+
+                                                <div class="wprt-btn">
+                                                    <a class="wprt-button small outline light" href="billing.html">READ MORE</a>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.wprt-content-box -->
+                                    </div><!-- /.wprt-animation-block -->
+
+                                    <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
+                                </div><!-- /.col-md-4 -->
+
+                                <div class="col-md-4">
+                                    <div class="wprt-animation-block" data-animate="fadeInUp" data-duration="1s" data-delay="0.6s" data-position="75%">
+                                        <div class="wprt-content-box style-1 text-white bg-dark has-move-content has-paddings" data-margin-top="-187" data-padding-top="36" data-padding-right="36" data-padding-bottom="36" data-padding-left="36">
+                                            <div class="inner">
+                                                <h2 class="heading font-size-18 text-white">OPENING HOURS</h2>
+
+                                                <div class="wprt-menu-list style-1 clearfix">
+                                                    <span class="text">Mon - Fri</span>
+                                                    <span class="value">08:00 - 17:00</span>
+                                                </div>
+
+                                                <div class="wprt-menu-list style-1 clearfix">
+                                                    <span class="text">Saturday</span>
+                                                    <span class="value">09:00 - 14:00</span>
+                                                </div>
+
+                                                <div class="wprt-menu-list style-1 clearfix">
+                                                    <span class="text">Sunday</span>
+                                                    <span class="value">08:00 - 10:00</span>
+                                                </div>
+
+                                                <div class="wprt-menu-list style-1 no-border-bottom clearfix">
+                                                    <span class="text">Holidays</span>
+                                                    <span class="value">Closed</span>
+                                                </div>
+                                                <div class="wprt-spacer clearfix" data-desktop="17" data-mobi="17" data-smobi="17"></div>
+                                            </div>
+                                        </div><!-- /.wprt-content-box -->
+                                    </div><!-- /.wprt-animation-block -->
+                                </div><!-- /.col-md-4 -->
+
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="65" data-smobi="60" id="about"></div>
+
+                                    <div class="wprt-headings clearfix text-center">
+                                        <h2 class="heading">About Us</h2>
+                                        <!--<p class="sub-heading">Our medical specialists care about you &amp; your family’s health</p>-->
+                                        <span>Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque 
+                                                Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque
+                                        </span>
+                                               
+                                    </div>
+
+                                    <div class="wprt-spacer clearfix" data-desktop="100" data-mobi="65" data-smobi="60"></div>
+                                </div><!-- /.col-md-12 -->
+
+                            </div><!-- .row -->
+                        </div><!-- /.wprt-container -->
+                    </div><!-- /.row-welcome -->
+
+                    
+                    <div class="col-md-12" style="background-color:#F7F7F7;" id="services">
+                            <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="60" data-smobi="60" style="background-color:#F7F7F7;"></div>
+
+                            <div class="wprt-headings clearfix text-center" style="background-color:#F7F7F7;">
+                                <h2 class="heading">Our Services</h2>
+                               
+                                       
+                            </div>
+
+                            <div class="wprt-spacer clearfix" data-desktop="45" data-mobi="45" data-smobi="45" ></div>
+                        </div><!-- /.col-md-12 -->
+
+                        <div class="col-md-4"  style="background-color:#F7F7F7;" >
+                            <div class="wprt-content-box has-shadow text-center">
+                                <div class="inner">                                        
+                                    <div class="wprt-icon-box has-width w100 icon-top align-center rounded-100 grey-outline clearfix">
+                                        <div class="image-wrap">
+                                            <img alt="image" src="assets/img/icon-1.png" style="width:60px;height:60px;">
+                                        </div>
+                                        <h3 class="heading"><a target="_blank" href="#appointment"><span>Booking</span></a></h3>
+                                        <p class="desc">
+                                            <span>Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque </span>
+                                        </p>
+                                    </div><!-- /.wprt-icon-box -->
+                                </div>
+                            </div><!-- /.wprt-content-box -->
+
+                            <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="col-md-4"  style="background-color:#F7F7F7;">
+                            <div class="wprt-content-box has-shadow text-center">
+                                <div class="inner">                                        
+                                    <div class="wprt-icon-box has-width w100 icon-top align-center rounded-100 grey-outline clearfix">
+                                        <div class="image-wrap">
+                                            <img alt="image" src="assets/img/icon-2.png" style="width:70px;height:70px;">
+                                        </div>
+                                        <h3 class="heading"><a target="_blank" href="billing.html"><span>Billing</span></a></h3>
+                                        <p class="desc">
+                                            <span>Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque </span>
+                                        </p>
+                                    </div><!-- /.wprt-icon-box -->
+                                </div>
+                            </div><!-- /.wprt-content-box -->
+
+                            <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
+                        </div><!-- /.col-md-4 -->
+
+                        <div class="col-md-4"  style="background-color:#F7F7F7;">
+                            <div class="wprt-content-box has-shadow text-center">
+                                <div class="inner">                                        
+                                    <div class="wprt-icon-box has-width w100 icon-top align-center rounded-100 grey-outline clearfix">
+                                        <div class="image-wrap">
+                                            <img alt="image" src="assets/img/icon-3.png" style="width:60px;height:60px;">
+                                        </div>
+                                        <h3 class="heading"><a target="_blank" href="livechat.html"><span>Diagnose</span></a></h3>
+                                        <p class="desc">
+                                            <span>Lorem ipsum dolor amet, consectetur adipiscing elit. Nullam placerat lorem quis tortor dignissim, eget ultrices sapien bibendum. Aenean scelerisque </span>
+                                        </p>
+                                    </div><!-- /.wprt-icon-box -->
+                                </div>
+                            </div><!-- /.wprt-content-box -->
+                        </div><!-- /.col-md-4 -->
+                    </div><!-- .row -->
+                </div><!-- /.wprt-container -->
+            </div><!-- /.row-welcome -->
+
+    
+                                </div><!-- /.col-md-12 -->                        
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </div><!-- /.row-news-1 -->
+                    <div class="col-md-12" style="background-color:#F7F7F7;">
+                            <div class="wprt-spacer clearfix" data-desktop="100" data-mobi="60" data-smobi="60"></div>
+                        </div><!-- /.col-md-12 -->
+                      <!-- Services -->
+
+                      <div class="row-servises-1">
+                            <div class="wprt-container">
+                                <div class="row">
+                                    <div class="col-md-12" id="departments">
+                                        <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="60" data-smobi="60"></div>
+                                    </div><!-- /.col-md-12 -->
+    
+                                    <div class="col-md-3">
+                                        <div class="wprt-content-box style-1 bg-accent has-paddings" data-padding-top="36" data-padding-right="36" data-padding-bottom="36" data-padding-left="36">
+                                            <div class="inner">
+                                                <h2 class="heading font-size-18 text-white">DEPARTMENTS</h2>
+    
+                                                <div class="wprt-list style-1 clearfix">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Primary Health Care</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-list style-1 clearfix">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Pediatric Clinic</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-list style-1 clearfix">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Gynaecological Clinic</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-list style-1 clearfix">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Eye Clinic</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-list style-1 clearfix">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Cardiac Clinic</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-list style-1 clearfix no-border-bottom">
+                                                    <div>
+                                                        <span>
+                                                            <span class="text">Ophthalmology Clinic</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="wprt-btn margin-top-20">
+                                                    <a class="wprt-button small outline light" href="departments.html">View All</a>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="wprt-spacer clearfix" data-desktop="0" data-mobi="30" data-smobi="30"></div>
+                                    </div><!-- /.col-md-3 -->
+    
+    
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="wprt-headings clearfix text-left">
+                                                    <h2 class="heading font-size-36">Our Departments</h2>
+                                                </div>
+    
+                                                <div class="wprt-spacer clearfix" data-desktop="30" data-mobi="30" data-smobi="30"></div>
+    
+                                                <div class="wprt-carousel-box arrow-style-1 arrow-square arrow-top has-arrows"  data-auto="true" data-loop="true" data-gap="30" data-column="3" data-column2="2" data-column3="1">
+                                                    <div class="owl-carousel owl-theme">
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/healthcare.jpg" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Primary Health Care</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>                                                            
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+    
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/cardiac.jpg" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Pediatric Clinic</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+    
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/ophthal.jpg" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Gynaecological Clinic</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+    
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/eye.jpg" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Eye Clinic</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+    
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/cardiac.jpg" height="200" width="270" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Cardiac Clinic</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+    
+                                                        <div class="wprt-image-box style-1 has-shadow clearfix">
+                                                            <div class="item">
+                                                                <div class="inner">
+                                                                    <div class="thumb">
+                                                                        <img src="assets/img/services/ophthal.jpg" alt="image">
+                                                                    </div>
+    
+                                                                    <div class="text-wrap">
+                                                                        <h3 class="title"><a href="#">Ophthalmology Clinic</a></h3>
+                                                                        <div class="desc">
+                                                                            Lorem ipsum dolor sit amet consectetur it adipiscing elit Nulla id enim nec 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.wprt-image-box -->
+                                                    </div><!-- /.owl-carousel -->
+                                                </div><!-- /.wprt-carousel-box -->
+                                            </div><!-- /.col-md-12 -->
+                                        </div><!-- /.row -->
+                                    </div><!-- /.col-md-9 -->
+    
+                                    <div class="col-md-12">
+                                        <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="60" data-smobi="60"></div>
+                                    </div><!-- /.col-md-12 -->
+                                </div>
+                            </div>
+                        </div><!-- /.row-servises-1 -->
+                        <div class="col-md-12" id="appointment">
+                                <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="60" data-smobi="60"></div>
+                            </div><!-- /.col-md-12 -->
+                        <div class="wprt-headings clearfix text-center" style="background-color:#F7F7F7;">
+                            <h2 class="heading">Book With Us</h2>              
+                        </div>
+                    <!-- Request 1 -->
+                    <div class="row-request-1" >
+                        <div class="wprt-container">
+                            <div class="row">
+                                <div class="col-md-12">                                    
+                                    <div class="wprt-spacer clearfix" data-desktop="60" data-mobi="60" data-smobi="60"></div>
+                                </div><!-- /.col-md-12 --> 
+
+                                <div class="col-md-6">   
+                                    <div class="wprt-toggles style-1">
+                                        <div class="toggle-item active">
+                                            <h3 class="toggle-heading">
+                                                <span class="inner">Why should I choose Hive?</span>
+                                            </h3>
+                                            <div class="toggle-content">
+                                                <p>For our +50 years' experience of providing healthcare to the local community, superb facilities with continuous investment in facilities and technology and high standards of nursing care and a friendly atmosphere. 99% of our patients who completed our feedback questionnaire rated us as very good.</p>
+                                            </div>
+                                        </div><!-- /.toggle-item -->
+
+                                        <div class="toggle-item">
+                                            <h3 class="toggle-heading">
+                                                <span class="inner">How does Hive work?</span>
+                                            </h3>
+                                            <div class="toggle-content">
+                                                <p>For our +50 years' experience of providing healthcare to the local community, superb facilities with continuous investment in facilities and technology and high standards of nursing care and a friendly atmosphere. 99% of our patients who completed our feedback questionnaire rated us as very good.</p>
+                                            </div>
+                                        </div><!-- /.toggle-item -->
+
+                                        <div class="toggle-item">
+                                            <h3 class="toggle-heading">
+                                                <span class="inner">How many patients are diagnosed at once?</span>
+                                            </h3>
+                                            <div class="toggle-content">
+                                                <p>For our +50 years' experience of providing healthcare to the local community, superb facilities with continuous investment in facilities and technology and high standards of nursing care and a friendly atmosphere. 99% of our patients who completed our feedback questionnaire rated us as very good.</p>
+                                            </div>
+                                        </div><!-- /.toggle-item -->
+
+                                        <div class="toggle-item">
+                                            <h3 class="toggle-heading">
+                                                <span class="inner">What are benefits of e-Diagnose?</span>
+                                            </h3>
+                                            <div class="toggle-content">
+                                                <p>For our +50 years' experience of providing healthcare to the local community, superb facilities with continuous investment in facilities and technology and high standards of nursing care and a friendly atmosphere. 99% of our patients who completed our feedback questionnaire rated us as very good.</p>
+                                            </div>
+                                        </div><!-- /.toggle-item -->
+
+                                        <div class="toggle-item">
+                                            <h3 class="toggle-heading">
+                                                <span class="inner">What services do we provide?</span>
+                                            </h3>
+                                            <div class="toggle-content">
+                                                <p>For our +50 years' experience of providing healthcare to the local community, superb facilities with continuous investment in facilities and technology and high standards of nursing care and a friendly atmosphere. 99% of our patients who completed our feedback questionnaire rated us as very good.</p>
+                                            </div>
+                                        </div><!-- /.toggle-item -->                                        
+                                    </div><!-- /.wprt-toggles -->
+                                </div><!-- /.col-md-6 -->
+
+                                <div class="col-md-6">
+                                    <div class="wprt-content-box request-form-1 bg-white">
+                                        <div class="inner">
+                                            <div class="wprt-headings clearfix text-left">
+                                                <h2 class="heading font-size-18">REQUEST APPOINTMENT</h2>
+                                            </div><!-- /.wprt-headings -->
+
+                                            <div class="wprt-spacer clearfix" data-desktop="30" data-mobi="30" data-smobi="30"></div>
+
+                                            <form class="contact-form wpcf7-form">
+                                                <div class="wprt-contact-form-1">
+                                                    <span class="wpcf7-form-control-wrap">
+                                                        <input type="date" tabindex="1" id="date" name="date" value="" class="wpcf7-form-control" required="">
+                                                    </span>
+                                                    <span class="wpcf7-form-control-wrap">
+                                                            <input type="time" tabindex="1" id="time" name="time" value="" class="wpcf7-form-control" required="">
+                                                    </span>
+
+                                                
+
+                                                    <span class="wpcf7-form-control-wrap departments">
+                                                            <select name="departments" class="wpcf7-form-control">
+                                                                <option value="menu_order">Departments</option>
+                                                                <option value="popularity">Primary Health Care</option>
+                                                                <option value="popularity">Pediatric Clinic</option>
+                                                                <option value="popularity">Gynaecological Clinic</option>
+                                                                <option value="popularity">Eye Clinic</option>
+                                                                <option value="popularity">Cardiac Clinic</option>
+                                                            </select>
+                                                        </span> 
+
+                                                    <span class="wpcf7-form-control-wrap doctors">
+                                                        <select name="doctors" class="wpcf7-form-control">
+                                                            <option value="dr_ony_hammond">Dr. XYZ</option>
+                                                        </select>
+                                                    </span>
+
+                                                    <span class="wpcf7-form-control-wrap message">
+                                                        <textarea name="message" tabindex="5" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" placeholder="Message *" required=""></textarea>
+                                                    </span>
+
+                                                    <div class="wrap-submit">
+                                                        <input type="submit" value="SUBMIT NOW" class="submit wpcf7-form-control wpcf7-submit" id="submit" name="submit">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div><!-- /.wprt-content-box -->
+                                </div><!-- /.col-md-6 -->
+
+                                <div class="col-md-12">                                    
+                                    <div class="wprt-spacer clearfix" data-desktop="80" data-mobi="60" data-smobi="60"></div>
+                                </div><!-- /.col-md-12 --> 
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </div><!-- /.row-request-1 -->
+                </div><!-- /.page-content -->
+            </div><!-- /#inner-content -->
+        </div><!-- /#site-content -->
+    </div><!-- /#content-wrap -->
+</main> <!-- /#main-content -->
+
+<!-- Footer -->
+<footer id="footer">
+    <div id="footer-widgets" class="wprt-container">
+        <div class="wprt-row gutter-30">
+            <div class="span_1_of_3 col">
+                <div class="widget widget_text">
+                    <div class="textwidget">
+                        <a href="index.html">
+                        <img src="assets/img/logo.png"  id="footer-logo" alt="logo" style="width:130px; height:130px;">
+                        <span style="font-size:20px;color:#fff;position: relative; top:50px;">HIVE</span>
+                        </a>
                     </div>
-
                 </div>
-            </div>
-            <!-- End Hero Content -->
 
-            <!-- Scroll Down -->
-            <div class="local-scroll">
-                <a href="#about" class="scroll-down"><i class="fa fa-angle-down scroll-down-icon"></i></a>
-            </div>
-            <!-- End Scroll Down -->
 
+               
+            </div><!-- /.span_1_of_3 -->
+
+            <div class="span_1_of_3 col">
+                <div class="widget widget_links">
+                    <h2 class="widget-title"><span>navigation</span></h2>
+                    <ul class="wprt-links clearfix col2">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#appointment">Appointment </a></li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="billing.html">Billing</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="livechat.html">Live Chat</a></li>
+                    </ul>
+                </div>               
+            </div><!-- /.span_1_of_3 -->
+
+            <div class="span_1_of_3 col">
+                <div class="widget widget_recent_news">
+                   
+                <div class="widget widget_information">
+                        <ul class="clearfix">
+                            <li class="phone">
+                                <i class="fa fa-phone"></i>
+                                <span>Call Us :  +61 1234567</span>
+                            </li>
+                            <li class="address">
+                                <i class="fa fa-map-marker"></i>
+                                <span>Deakin University Burwood Highway, Australia</span>
+                            </li>
+                            <li class="email">
+                                <i class="fa fa-envelope-o"></i>
+                                <span>admin@deakin.edu.au</span>
+                            </li>
+                        </ul>
+                    </div> 
+                    <div class="widget widget_socials">
+                            <div class="socials clearfix">
+                                <div class="icon active">
+                                    <a target="_blank" href="#">
+                                    <i class="fa fa-twitter"></i></a>
+                                </div>
+        
+                                <div class="icon">
+                                    <a target="_blank" href="#">
+                                    <i class="fa fa-facebook"></i></a>
+                                </div>
+        
+                                <div class="icon">
+                                    <a target="_blank" href="#"><i class="fa fa-linkedin"></i></a>
+                                </div>
+        
+                                <div class="icon">
+                                    <a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
+                                </div>
+        
+                                <div class="icon">
+                                    <a target="_blank" href="#">
+                                    <i class="fa fa-skype"></i></a>
+                                </div>
+                            </div>
+                        </div>             
+                  
+                </div>             
+            </div><!-- /.span_1_of_3 -->
         </div>
-    </section>
-    <!-- End Home Section -->
+    </div><!-- /#footer-widgets -->
+</footer><!-- /#footer -->
 
-    <!-- Navigation panel -->
-    <nav class="main-nav transparent stick-fixed">
-        <div class="full-wrapper relative clearfix">
-            <!-- Logo ( * your text or image into link tag *) -->
-            <div class="nav-logo-wrap local-scroll">
-                <a href="#top" class="logo">
-                    <img src="images/logo.png" alt="" />
-                    Hive
-                </a>
-            </div>
-            <div class="mobile-nav">
-                <i class="fa fa-bars"></i>
-            </div>
-            <!-- Main Menu -->
-            <div class="inner-nav desktop-nav">
-                <ul class="clearlist scroll-nav local-scroll">
-                    <li class="active"><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Team</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#contact">Contacts</a></li>
-
-                </ul>
-            </div>
+<!-- Bottom -->
+<div id="bottom" class="clearfix style-1">
+    <div id="bottom-bar-inner" class="wprt-container">
+        <div class="bottom-bar-inner-wrap">
+            <div class="bottom-bar-content">
+                <div id="copyright" class="text-center">
+                    &copy; 2018 Deakin Hive Team, All rights reserved
+                </div><!-- /#copyright -->
+            </div><!-- /.bottom-bar-content -->
         </div>
-    </nav>
-    <!-- End Navigation panel -->
-
-
-    <!-- About Section -->
-    <section class="page-section" id="about">
-        <div class="container relative">
-
-            <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
-                About Us
-            </h2>
-
-            <div class="section-text mb-50 mb-sm-20">
-                <div class="row">
-
-
-                    <div class="col-md-6 col-sm-6 mb-sm-50 mb-xs-30">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus ligula semper metus
-                        pellentesque mattis. Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor
-                        consectetur fermentum nibh volutpat, accumsan purus.
-                    </div>
-
-                    <div class="col-md-6 col-sm-6 mb-sm-50 mb-xs-30">
-                        Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque
-                        porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.
-                        Donec vel ultricies purus. Nam dictum sem, eu aliquam.
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row" style="display: none">
-
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp">
-                    <div class="team-item">
-
-                        <div class="team-item-image">
-
-                            <img src="images/team/team-1.jpg" alt=""/>
-
-                            <div class="team-item-detail">
-
-                                <h4 class="font-alt normal">Hello & Welcome!</h4>
-
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&nbsp;iaculis diam.
-                                </p>
-
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="team-item-descr font-alt">
-
-                            <div class="team-item-name">
-                                Thomas Rhythm
-                            </div>
-
-                            <div class="team-item-role">
-                                Art Director
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <!-- End Team item -->
-
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-
-                        <div class="team-item-image">
-
-                            <img src="images/team/team-2.jpg" alt=""/>
-
-                            <div class="team-item-detail">
-
-                                <h4 class="font-alt normal">Nice to meet!</h4>
-
-                                <p>
-                                    Curabitur augue, nec finibus mauris pretium eu. Duis placerat ex gravida nibh
-                                    tristique porta.
-                                </p>
-
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="team-item-descr font-alt">
-
-                            <div class="team-item-name">
-                                Marta Laning
-                            </div>
-
-                            <div class="team-item-role">
-                                Web engineer
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <!-- End Team item -->
-
-                <!-- Team item -->
-                <div class="col-sm-4 mb-xs-30 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-
-                        <div class="team-item-image">
-
-                            <img src="images/team/team-3.jpg" alt=""/>
-
-                            <div class="team-item-detail">
-
-                                <h4 class="font-alt normal">Whats Up!</h4>
-
-                                <p>
-                                    Adipiscing elit curabitur eu&nbsp;adipiscing lacus eu&nbsp;adipiscing lacus, a&nbsp;iaculis
-                                    diam.
-                                </p>
-
-                                <div class="team-social-links">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="team-item-descr font-alt">
-
-                            <div class="team-item-name">
-                                Steve ANDERS
-                            </div>
-
-                            <div class="team-item-role">
-                                Developer
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <!-- End Team item -->
-
-            </div>
-
-
-        </div>
-    </section>
-    <!-- End About Section -->
-
-    <!-- Divider -->
-    <hr class="mt-0 mb-0 "/>
-    <!-- End Divider -->
-
-    <!-- Services Section -->
-    <section class="page-section" id="services">
-        <div class="container relative">
-
-            <h2 class="section-title font-alt mb-70 mb-sm-40">
-                Services
-            </h2>
-
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs tpl-alt-tabs font-alt pt-30 pt-sm-0 pb-30 pb-sm-0">
-
-                <li>
-                    <a href="#service-web-design" data-toggle="tab">
-
-                        <div class="alt-tabs-icon">
-                            <span class="icon-desktop"></span>
-                        </div>
-
-                        Online Diagnosis
-                    </a>
-                </li>
-                <li>
-                    <a href="#service-graphic" data-toggle="tab">
-
-                        <div class="alt-tabs-icon">
-                            <span class="icon-tools"></span>
-                        </div>
-
-                        Booking
-                    </a>
-                </li>
-                <li>
-                    <a href="#service-development" data-toggle="tab">
-
-                        <div class="alt-tabs-icon">
-                            <span class="icon-gears"></span>
-                        </div>
-
-                        Billing
-                    </a>
-                </li>
-
-            </ul>
-            <!-- End Nav tabs -->
-
-            <!-- Tab panes -->
-            <div class="tab-content tpl-tabs-cont" style="display:none;">
-
-                <!-- Service Item -->
-                <div class="tab-pane fade in active" id="service-branding" style="display:none;">
-
-                    <div class="section-text">
-                        <div class="row">
-                            <div class="col-md-4 mb-md-40 mb-xs-30">
-                                <blockquote class="mb-0">
-                                    <p>
-                                        A&nbsp;brand for a&nbsp;company is&nbsp;like a&nbsp;reputation
-                                        for a&nbsp;person. You earn reputation by&nbsp;trying to&nbsp;do&nbsp;hard
-                                        things well.
-                                    </p>
-                                    <footer>
-                                        Jeff Bezos
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur
-                                fermentum
-                                volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing
-                                elit.
-                                In maximus ligula metus pellentesque mattis.
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla
-                                lacus.
-                                Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus.
-                                Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Service Item -->
-
-                <!-- Service Item -->
-                <div class="tab-pane fade" id="service-web-design">
-
-                    <div class="section-text">
-                        <div class="row">
-                            <div class="col-md-4 mb-md-40 mb-xs-30">
-                                <blockquote class="mb-0">
-                                    <p>
-                                        It&nbsp;doesn&rsquo;t matter how many times&nbsp;I have to&nbsp;click, as&nbsp;long
-                                        as&nbsp;each click is&nbsp;a&nbsp;mindless, unambiguous choice.
-                                    </p>
-                                    <footer>
-                                        Steve Krug
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Cras mi tortor, laoreet id ornare et, accumsan non magna. Maecenas vulputate accumsan
-                                velit.
-                                Curabitur a nulla ex. Nam a tincidunt ante. Vitae gravida turpis. Vestibulum varius
-                                nulla non nulla scelerisque tristique.
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Mauris id viverra augue, eu porttitor diam. Praesent faucibus est a interdum elementum.
-                                Nam varius at ipsum id dignissim. Nam a tincidunt ante lorem. Pellentesque suscipit ante
-                                at ullamcorper pulvinar neque porttitor.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Service Item -->
-
-                <!-- Service Item -->
-                <div class="tab-pane fade" id="service-graphic">
-
-                    <div class="section-text">
-                        <div class="row">
-                            <div class="col-md-4 mb-md-40 mb-xs-30">
-                                <blockquote class="mb-0">
-                                    <p>
-                                        Never fall in&nbsp;love with an&nbsp;idea. They&rsquo;re whores. If&nbsp;the one
-                                        you&rsquo;re with isn&rsquo;t doing the job, there&rsquo;s always another.
-                                    </p>
-                                    <footer>
-                                        Chip Kidd
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Lorem ipsum dolor sit semper amet, consectetur adipiscing elit. In maximus ligula metus
-                                pellentesque
-                                mattis. Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Praesent sed nisi
-                                eleifend,
-                                fermentum orci amet, iaculis libero.
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-
-                                Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus.
-                                Etiam sit amet
-                                fringilla lacus. Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id&nbsp;dolor
-                                consectetur fermentum volutpat nibh, accumsan purus.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Service Item -->
-
-                <!-- Service Item -->
-                <div class="tab-pane fade" id="service-development">
-
-                    <div class="section-text">
-                        <div class="row">
-                            <div class="col-md-4 mb-md-40 mb-xs-30">
-                                <blockquote class="mb-0">
-                                    <p>
-                                        All that is&nbsp;valuable in&nbsp;human society depends upon the opportunity for
-                                        development accorded the individual.
-                                    </p>
-                                    <footer>
-                                        Albert Einstein
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Fusce hendrerit vitae nunc id gravida. Donec euismod quis ante at mattis. Mauris dictum
-                                ante sit
-                                amet enim interdum semper. Vestibulum odio justo, faucibus et dictum eu, malesuada nec
-                                neque.
-                                Maecenas volutpat, diam enim sagittis.
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Sed id dolor
-                                consectetur fermentum
-                                volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing
-                                elit.
-                                Inmed maximus ligula metus pellentesque.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Service Item -->
-
-                <!-- Service Item -->
-                <div class="tab-pane fade" id="service-photography">
-
-                    <div class="section-text">
-                        <div class="row">
-                            <div class="col-md-4 mb-md-40 mb-xs-30">
-                                <blockquote class="mb-0">
-                                    <p>
-                                        Photography is&nbsp;the simplest thing in&nbsp;the world, but it&nbsp;is&nbsp;incredibly
-                                        complicated to&nbsp;make it&nbsp;really work.
-                                    </p>
-                                    <footer>
-                                        Martin Parr
-                                    </footer>
-                                </blockquote>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Donec vel ultricies purus. Nam dictum sem, ipsum aliquam . Etiam sit amet fringilla
-                                lacus.
-                                Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus.
-                                Praesent sed nisi eleifend, fermentum orci amet, iaculis libero.
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                                Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur
-                                fermentum
-                                volutpat nibh, accumsan purus. Lorem ipsum dolor sit semper amet, consectetur adipiscing
-                                elit.
-                                In maximus ligula metus pellentesque mattis.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End Service Item -->
-
-            </div>
-            <!-- End Tab panes -->
-
-        </div>
-    </section>
-    <!-- End Services Section -->
-
-
-    <!-- Call Action Section -->
-    <section class="page-section pt-0 pb-0 banner-section bg-dark"
-             data-background="images/full-width-images/section-bg-2.jpg">
-        <div class="container relative">
-
-            <div class="row">
-
-                <div class="col-sm-6">
-
-                    <div class="mt-140 mt-lg-80 mb-140 mb-lg-80">
-                        <div class="banner-content">
-                            <h3 class="banner-heading font-alt">Looking for exclusive diagnosis and booking doctor
-                                today?</h3>
-                            <div class="banner-decription">
-                                Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor.
-                                Integer non dapibus diam, ac eleifend lectus.
-                            </div>
-                            <div class="local-scroll">
-                                <a href="#contact" class="btn btn-mod btn-w btn-medium btn-round">Lets start</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-sm-6 banner-image wow fadeInUp" data-wow-duration="1.2s" style="display: none">
-                    <img src="images/promo-1.png" alt=""/>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Call Action Section -->
-
-
-    <!-- Portfolio Section -->
-    <section class="page-section pb-0" id="portfolio">
-        <div class="relative">
-
-            <h2 class="section-title font-alt mb-70 mb-sm-40">
-                TEAM
-            </h2>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-
-                        <div class="section-text align-center mb-70 mb-xs-40">
-                            In&nbsp;auctor ex&nbsp;id&nbsp;urna faucibus porttitor. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. In&nbsp;maximus ligula semper metus pellentesque mattis.
-                            Maecenas volutpat, diam enim sagittis quam, id&nbsp;porta quam. Sed id&nbsp;dolor
-                            consectetur fermentum nibh volutpat, accumsan purus.
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Works Filter -->
-            <div class="works-filter font-alt align-center">
-                <a href="#" class="filter active" data-filter="*">All members</a>
-                <a href="#branding" class="filter" data-filter=".branding">Developers</a>
-                <a href="#design" class="filter" data-filter=".design">Designers</a>
-                <a href="#photography" class="filter" data-filter=".photography">Marketing</a>
-            </div>
-            <!-- End Works Filter -->
-
-            <!-- Works Grid -->
-            <ul class="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles" id="work-grid">
-
-                <!-- Work Item (Lightbox) -->
-                <li class="work-item mix photography">
-                    <a href="images/portfolio/full-project-1.jpg" class="work-lightbox-link mfp-image">
-                        <div class="work-img">
-                            <img src="images/portfolio/projects-1.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Portrait</h3>
-                            <div class="work-descr">
-                                Lightbox
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-                <!-- Work Item (External Page) -->
-                <li class="work-item mix branding design">
-                    <a href="portfolio-single-1.html" class="work-ext-link">
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/projects-2.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Vase 3D</h3>
-                            <div class="work-descr">
-                                External Page
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-                <!-- Work Item (External Page) -->
-                <li class="work-item mix branding">
-                    <a href="portfolio-single-1.html" class="work-ext-link">
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/projects-3.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Boy in T-shirt</h3>
-                            <div class="work-descr">
-                                External Page
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-                <!-- Work Item (External Page) -->
-                <li class="work-item mix design photography">
-                    <a href="portfolio-single-1.html" class="work-ext-link">
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/projects-4.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Space</h3>
-                            <div class="work-descr">
-                                External Page
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-                <!-- Work Item (External Page) -->
-                <li class="work-item mix design">
-                    <a href="portfolio-single-1.html" class="work-ext-link">
-                        <div class="work-img">
-                            <img class="work-img" src="images/portfolio/projects-5.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Model</h3>
-                            <div class="work-descr">
-                                External Page
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-                <!-- Work Item (Lightbox) -->
-                <li class="work-item mix design branding">
-                    <a href="images/portfolio/full-project-3.jpg" class="work-lightbox-link mfp-image">
-                        <div class="work-img">
-                            <img src="images/portfolio/projects-6.jpg" alt="Work"/>
-                        </div>
-                        <div class="work-intro">
-                            <h3 class="work-title">Young Man</h3>
-                            <div class="work-descr">
-                                Lightbox
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- End Work Item -->
-
-            </ul>
-            <!-- End Works Grid -->
-
-        </div>
-    </section>
-    <!-- End Portfolio Section -->
-
-
-    <!-- Features Section -->
-    <section class="page-section">
-        <div class="container relative">
-
-            <h2 class="section-title font-alt mb-70 mb-sm-40">
-                Why Choose Us?
-            </h2>
-
-            <!-- Features Grid -->
-            <div class="row multi-columns-row alt-features-grid">
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-flag"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re Creative</h3>
-                        <div class="alt-features-descr align-left">
-                            Lorem ipsum dolor sit amet, c-r adipiscing elit.
-                            In maximus ligula semper metus pellentesque mattis.
-                            Maecenas volutpat, diam enim.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-clock"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re accurate</h3>
-                        <div class="alt-features-descr align-left">
-                            Proin fringilla augue at maximus vestibulum.
-                            Nam pulvinar vitae neque et porttitor. Praesent sed
-                            nisi eleifend, lorem fermentum orci sit amet, iaculis libero.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-hotairballoon"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">Cutting-edge tech</h3>
-                        <div class="alt-features-descr align-left">
-                            Curabitur iaculis accumsan augue, nec finibus mauris pretium eu.
-                            Duis placerat ex gravida nibh tristique porta. Nulla facilisi.
-                            Suspendisse ultricies eros blandit.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-heart"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We care patients</h3>
-                        <div class="alt-features-descr align-left">
-                            Cras luctus interdum sodales. Quisque quis odio dui. Sedes sit
-                            amet neque malesuada, lobortis commodo magna ntesque pharetra
-                            metus vivera sagittis.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-linegraph"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re responsible</h3>
-                        <div class="alt-features-descr align-left">
-                            Fusce aliquet quam eget neque ultrices elementum. Nulla posuere
-                            felis id arcu blandit sagittis. Eleifender vestibulum purus, sit
-                            amet vulputate risus.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-chat"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We're Friendly</h3>
-                        <div class="alt-features-descr align-left">
-                            Pulvinar vitae neque et porttitor. Integer non dapibus diam, ac
-                            eleifend lectus. Praesent sed nisi eleifend, fermentum orci sit
-                            amet, iaculis libero interdum.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-
-            </div>
-            <!-- End Features Grid -->
-
-        </div>
-    </section>
-    <!-- End Features Section -->
-
-
-    <!-- Testimonials Section -->
-    <section class="page-section bg-dark bg-dark-alfa-90 fullwidth-slider"
-             data-background="images/full-width-images/section-bg-3.jpg">
-
-        <!-- Slide Item -->
-        <div>
-            <div class="container relative">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 align-center">
-                        <!-- Section Icon -->
-                        <div class="section-icon">
-                            <span class="icon-quote"></span>
-                        </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
-                        <blockquote class="testimonial white">
-                            <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
-                            </p>
-                            <footer class="testimonial-author">
-                                John CITIZEN
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slide Item -->
-
-        <!-- Slide Item -->
-        <div>
-            <div class="container relative">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 align-center">
-                        <!-- Section Icon -->
-                        <div class="section-icon">
-                            <span class="icon-quote"></span>
-                        </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
-                        <blockquote class="testimonial white">
-                            <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
-                            </p>
-                            <footer class="testimonial-author">
-                                John CITIZEN
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slide Item -->
-
-        <!-- Slide Item -->
-        <div>
-            <div class="container relative">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 align-center">
-                        <!-- Section Icon -->
-                        <div class="section-icon">
-                            <span class="icon-quote"></span>
-                        </div>
-                        <!-- Section Title --><h3 class="small-title font-alt">What people say?</h3>
-                        <blockquote class="testimonial white">
-                            <p>
-                                Phasellus luctus commodo ullamcorper a posuere rhoncus commodo elit. Aenean congue,
-                                risus utaliquam dapibus. Thanks!
-                            </p>
-                            <footer class="testimonial-author">
-                                John CITIZEN
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slide Item -->
-
-    </section>
-    <!-- End Testimonials Section -->
-
-
-    <!-- Blog Section -->
-    <section class="page-section" id="news">
-        <div class="container relative">
-
-            <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
-                Latest News
-
-                <a href="blog-classic-sidebar-right.html" class="section-more right">All News in our blog <i
-                        class="fa fa-angle-right"></i></a>
-
-            </h2>
-
-            <div class="row multi-columns-row">
-
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s"
-                     data-wow-duration="2s">
-
-                    <div class="post-prev-img">
-                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-1.jpg" alt=""/></a>
-                    </div>
-
-                    <div class="post-prev-title font-alt">
-                        <a href="">Register Module</a>
-                    </div>
-
-                    <div class="post-prev-info font-alt">
-                        <a href="">John CITIZEN</a> | 10 AUG
-                    </div>
-
-                    <div class="post-prev-text">
-                        Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor
-                        consectetur fermentum nibh volutpat, accumsan purus.
-                    </div>
-
-                    <div class="post-prev-more">
-                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i
-                                class="fa fa-angle-right"></i></a>
-                    </div>
-
-                </div>
-                <!-- End Post Item -->
-
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.2s"
-                     data-wow-duration="2s">
-
-                    <div class="post-prev-img">
-                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-2.jpg" alt=""/></a>
-                    </div>
-
-                    <div class="post-prev-title font-alt">
-                        <a href="">Server test</a>
-                    </div>
-
-                    <div class="post-prev-info font-alt">
-                        <a href="">John CITIZEN</a> | 9 AUG
-                    </div>
-
-                    <div class="post-prev-text">
-                        Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor
-                        consectetur fermentum nibh volutpat, accumsan purus.
-                    </div>
-
-                    <div class="post-prev-more">
-                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i
-                                class="fa fa-angle-right"></i></a>
-                    </div>
-
-                </div>
-                <!-- End Post Item -->
-
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.3s"
-                     data-wow-duration="2s">
-
-                    <div class="post-prev-img">
-                        <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-3.jpg" alt=""/></a>
-                    </div>
-
-                    <div class="post-prev-title font-alt">
-                        <a href="">Hello world</a>
-                    </div>
-
-                    <div class="post-prev-info font-alt">
-                        <a href="">John CITIZEN</a> | 7 AUG
-                    </div>
-
-                    <div class="post-prev-text">
-                        Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor
-                        consectetur fermentum nibh volutpat, accumsan purus.
-                    </div>
-
-                    <div class="post-prev-more">
-                        <a href="" class="btn btn-mod btn-gray btn-round">Read More <i
-                                class="fa fa-angle-right"></i></a>
-                    </div>
-
-                </div>
-                <!-- End Post Item -->
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Blog Section -->
-
-
-    <!-- Newsletter Section -->
-    <section class="small-section bg-gray-lighter">
-        <div class="container relative">
-
-            <form class="form align-center" id="mailchimp">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-
-                        <div class="newsletter-label font-alt">
-                            Stay informed with our newsletter
-                        </div>
-
-                        <div class="mb-20">
-                            <input placeholder="Enter Your Email"
-                                   class="newsletter-field form-control input-md round mb-xs-10" type="email"
-                                   pattern=".{5,100}" required/>
-
-                            <button type="submit" class="btn btn-mod btn-medium btn-round mb-xs-10">
-                                Subscribe
-                            </button>
-                        </div>
-
-                        <div class="form-tip">
-                            <i class="fa fa-info-circle"></i> Please trust us, we will never send you spam
-                        </div>
-
-                        <div id="subscribe-result"></div>
-
-                    </div>
-                </div>
-            </form>
-
-        </div>
-    </section>
-    <!-- End Newsletter Section -->
-
-
-    <!-- Contact Section -->
-    <section class="page-section" id="contact">
-        <div class="container relative">
-
-            <h2 class="section-title font-alt mb-70 mb-sm-40">
-                Contact
-            </h2>
-
-            <div class="row mb-60 mb-xs-40">
-
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="row">
-
-                        <!-- Phone -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
-                                <div class="ci-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="ci-title font-alt">
-                                    Call Us
-                                </div>
-                                <div class="ci-text">
-                                    +61 4 50720712
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Phone -->
-
-                        <!-- Address -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
-                                <div class="ci-icon">
-                                    <i class="fa fa-map-marker"></i>
-                                </div>
-                                <div class="ci-title font-alt">
-                                    Address
-                                </div>
-                                <div class="ci-text">
-                                    Burwood Melbourne
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Address -->
-
-                        <!-- Email -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                            <div class="contact-item">
-                                <div class="ci-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="ci-title font-alt">
-                                    Email
-                                </div>
-                                <div class="ci-text">
-                                    <a href="mailto:support@bestlooker.pro">support@hive.com.au</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Email -->
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Contact Form -->
-            <div class="row" style="display: none">
-                <div class="col-md-8 col-md-offset-2">
-
-                    <form class="form contact-form" id="contact_form">
-                        <div class="clearfix">
-
-                            <div class="cf-left-col">
-
-                                <!-- Name -->
-                                <div class="form-group">
-                                    <input type="text" name="name" id="name" class="input-md round form-control"
-                                           placeholder="Name" pattern=".{3,100}" required>
-                                </div>
-
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" class="input-md round form-control"
-                                           placeholder="Email" pattern=".{5,100}" required>
-                                </div>
-
-                            </div>
-
-                            <div class="cf-right-col">
-
-                                <!-- Message -->
-                                <div class="form-group">
-                                    <textarea name="message" id="message" class="input-md round form-control"
-                                              style="height: 84px;" placeholder="Message"></textarea>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="clearfix">
-
-                            <div class="cf-left-col">
-
-                                <!-- Inform Tip -->
-                                <div class="form-tip pt-20">
-                                    <i class="fa fa-info-circle"></i> All the fields are required
-                                </div>
-
-                            </div>
-
-                            <div class="cf-right-col">
-
-                                <!-- Send Button -->
-                                <div class="align-right pt-10">
-                                    <button class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Submit
-                                        Message
-                                    </button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div id="result"></div>
-                    </form>
-
-                </div>
-            </div>
-            <!-- End Contact Form -->
-
-        </div>
-    </section>
-    <!-- End Contact Section -->
-
-
-    <!-- Foter -->
-    <footer class="page-section bg-gray-lighter footer pb-60">
-        <div class="container">
-
-            <!-- Footer Logo -->
-            <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.2s">
-                <a href="#top">#HIVE</a>
-            </div>
-            <!-- End Footer Logo -->
-
-            <!-- Social Links -->
-            <div class="footer-social-links mb-110 mb-xs-60">
-                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
-                <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
-            </div>
-            <!-- End Social Links -->
-
-            <!-- Footer Text -->
-            <div class="footer-text">
-
-                <!-- Copyright -->
-                <div class="footer-copy font-alt">
-                    <a href="" target="_blank">&copy; DEAKIN HIVE TEAM 2018</a>.
-                </div>
-                <!-- End Copyright -->
-
-                <div class="footer-made">
-                    Made with magic
-                </div>
-
-            </div>
-            <!-- End Footer Text -->
-
-        </div>
-
-
-        <!-- Top Link -->
-        <div class="local-scroll">
-            <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
-        </div>
-        <!-- End Top Link -->
-
-    </footer>
-    <!-- End Foter -->
-
-
-</div>
-<!-- End Page Wrap -->
-
-
-<!-- JS -->
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/SmoothScroll.js"></script>
-<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
-<script type="text/javascript" src="js/jquery.localScroll.min.js"></script>
-<script type="text/javascript" src="js/jquery.viewport.mini.js"></script>
-<script type="text/javascript" src="js/jquery.countTo.js"></script>
-<script type="text/javascript" src="js/jquery.appear.js"></script>
-<script type="text/javascript" src="js/jquery.sticky.js"></script>
-<script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
-<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-<!-- Replace test API Key "AIzaSyBfiIZSk_QC7UWgdGekKZLEUXUBi_mWPnE" with your own one below
-**** You can get API Key here - https://developers.google.com/maps/documentation/javascript/get-api-key -->
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfiIZSk_QC7UWgdGekKZLEUXUBi_mWPnE"></script>
-<script type="text/javascript" src="js/gmap3.min.js"></script>
-<script type="text/javascript" src="js/wow.min.js"></script>
-<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="js/jquery.simple-text-rotator.min.js"></script>
-<script type="text/javascript" src="js/all.js"></script>
-<script type="text/javascript" src="js/contact-form.js"></script>
-<script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
-<!--[if lt IE 10]>
-<script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+    </div>
+</div><!-- /#bottom -->
+</div><!-- /#page -->
+</div><!-- /#wrapper -->
+
+<a id="scroll-top"></a>
+
+<!-- Javascript -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="assets/js/countTo.js"></script>
+<script type="text/javascript" src="assets/js/validate.js"></script>
+<script type="text/javascript" src="assets/js/shortcodes.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
+
+<!-- Revolution Slider -->
+<script type="text/javascript" src="includes/rev-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="assets/js/rev-slider.js"></script>
+<!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->  
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="includes/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
 
 </body>
 </html>
+
