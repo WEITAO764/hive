@@ -142,7 +142,7 @@ app.post('/registersubmit', function (req, res) {
         res.sendFile(__dirname + '/public/backend/register.html');
     }
     //Register type: 0 means patient and 1 means doctor
-    /*
+
     var registertype = req.body.registertype;
     //General Information
     var firstname = req.body.firstname;
@@ -158,23 +158,28 @@ app.post('/registersubmit', function (req, res) {
     var username = req.body.username;
     var password = encrypt.sha1hash(req.body.password);
     var email = req.body.email;
-*/
+    if (registertype === 1) {
+        //Well the doctor need a clinic Name
+        var clinicname = req.body.clinicname;
+    }
+    /*
     registertype = 1;
     //General Information
-    firstname = "Petty";
+    firstname = "Petty2";
     lastname = "Citizen";
+    clinicname = "Test Clinic2";
     address = "Monash High Way";
     suburb = "Mont waverley";
     postcode = "3133";
-
     country = "AU";
+
     dateofbirth = "21081955";
     phoneno = "0450720711";
     //For later login
-    username = "doctor";
+    username = "doctor3";
     password = encrypt.sha1hash("password");
-    email = "test@test.com";
-
+    email = "tes3@test.com";
+*/
     if (registertype === 0)
     //0 means patient and 1 means doctor
     {
@@ -188,7 +193,6 @@ app.post('/registersubmit', function (req, res) {
                 else {
                     //INSERT INTO patients (phoneno, email, username, password)
                     // VALUES (value1, value2, value3,...)
-                    //INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')
                     con.query("INSERT INTO patients (username,password,firstname,lastname,address,suburb,postcode,country," +
                         "dateofbirth,phoneno,email) VALUES ('" + username + "','" + password + "','" + firstname + "','" +
                         lastname + "','" + address + "','" + suburb + "','" + postcode + "','" + country + "','" +
@@ -223,36 +227,58 @@ app.post('/registersubmit', function (req, res) {
     else {
         con.query('SELECT * from doctors WHERE username = \"' + username + '\" OR email = \"' + email + '\"', function (err, rows, fields) {
             if (!err) {
-                console.log(rows);
+                //console.log(rows);
                 if (rows.length > 0) {
                     //duplicate username
                     res.sendFile(__dirname + '/public/backend/login.html');
                 }
                 else {
-                    //INSERT INTO patients (phoneno, email, username, password)
-                    // VALUES (value1, value2, value3,...)
-                    //INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')
-                    con.query("INSERT INTO patients (username,password,firstname,lastname,address,suburb,postcode,country," +
-                        "dateofbirth,phoneno,email) VALUES ('" + username + "','" + password + "','" + firstname + "','" +
-                        lastname + "','" + address + "','" + suburb + "','" + postcode + "','" + country + "','" +
-                        dateofbirth + "','" + phoneno + "','" + email + "')",
-                        function (err, rows, fields) {
-                            if (!err) {
-                                console.log(rows[0]);
-                                if (rows.length > 0 && rows[0].username === username) {
-                                    //Login fine
-                                    res.sendFile(__dirname + '/public/backend/dashboard.html');
-                                }
-                                else {
-                                    //Fail
-                                    res.sendFile(__dirname + '/public/backend/register.html');
-                                }
+                    var clinicID = 0;
+                    con.query('SELECT * from clinics WHERE name = \"' + clinicname + '\"', function (err, rows, fields) {
+                        if (!err) {
+                            console.log(rows);
+                            if (rows.length > 0) {
+                                //Has exit clinic
+                                clinicID = rows[0].clinicID;
                             }
                             else {
-                                //ERROR
-                                res.sendFile(__dirname + '/public/backend/register.html');
+                                //Add new clinic
+                                con.query("INSERT INTO clinics (name,address,suburb,postcode,country) VALUES ('" +
+                                    clinicname + "','" + address + "','" + suburb + "','" + postcode + "','" + country +
+                                    "')",
+                                    function (err, result, fields) {
+                                        if (!err) {
+                                            //console.log(rows[0]);
+                                            clinicID = result.insertId;
+                                        }
+                                        else {
+                                            //ERROR
+                                            res.sendFile(__dirname + '/public/backend/register.html');
+                                        }
+                                    });
                             }
-                        });
+
+                            con.query("INSERT INTO doctors (username,password,firstname,lastname," +
+                                "dateofbirth,phoneno,email,clinicID) VALUES ('" + username + "','" + password + "','" +
+                                firstname + "','" + lastname + "','" +
+                                dateofbirth + "','" + phoneno + "','" + email + "','" + clinicID + "')",
+                                function (err, result, fields) {
+                                    if (!err) {
+                                        res.sendFile(__dirname + '/public/backend/dashboard.html');
+                                    }
+                                    else {
+                                        //ERROR
+                                        res.sendFile(__dirname + '/public/backend/register.html');
+                                    }
+                                });
+                        }
+                        else {
+                            //ERROR
+                            res.sendFile(__dirname + '/public/backend/login.html');
+                        }
+
+                    });
+
                 }
             }
             else {
