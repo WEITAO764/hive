@@ -1,53 +1,90 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HIVE - Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="#HIVE Backend">
+        <meta name="author" content="WEI TAO">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <title>#HIVE The most advanced online diagnosis</title>
 
-    <!--bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
-    <!--font awsome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="assets/js/modernizr.min.js"></script>
 
-    <!--favicon-->
-    <link rel="shortcut icon" href="images/favicon.png">
-</head>
+    </head>
 
-<body>
-    <div class="row">
-        <div class="col-lg-4"></div>
-            <div class="logo">
-                <img src="images/logo.png" class="logo-img">
-                <div class="logo-title">HIVE</div>
+    <body>
+
+        <div class="account-pages"></div>
+        <div class="clearfix"></div>
+        <div class="wrapper-page">
+            <div class="text-center">
+                <a href="index.html" class="logo"><span>HIVE</span></a>
+                <h5 class="text-muted m-t-0 font-600">SIT764</h5>
             </div>
-        <div class="col-lg-4"></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-2 col-1"></div>
-        <form action="#" method="POST" class="form col-lg-4 col-md-4 col-sm-8 col-10">
-            <div class="form-header">
-                    <i class="fa fa-lock"></i> Sign In
+        	<div class="m-t-40 card-box">
+                <div class="text-center">
+                    <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
+                </div>
+                <div class="p-20">
+                    <form class="form-horizontal m-t-20" action="index.html">
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" required="" placeholder="Username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="password" required="" placeholder="Password">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group text-center m-t-30">
+                            <div class="col-xs-12">
+                                <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Log In</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" name="loginusername" id="loginusername" placeholder="Enter username">
+            <!-- end card-box-->
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="text-muted">Don't have an account? <a href="/register" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="loginpassword" id="loginpassword" placeholder="Enter Password">
-                <span><a href="#">Forgot Password?</a></span>
-            </div>
-            <button type="submit" class="btn btn-primary float-right">Login</button><br>
-            <div><a href="register.html">Don't have an account? Sign Up</a></div>  
-        </form>
-        <div class="col-lg-4 col-md-4 col-sm-2 col-1"></div>
-    </div>   
-</body>
+
+        </div>
+        <!-- end wrapper page -->
+
+
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+	
+	</body>
 </html>
