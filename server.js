@@ -318,10 +318,48 @@ app.post('/registersubmit', function (req, res) {
     }
 });
 
+app.get("/dashboard", function (request, response) {
+    response.sendFile(__dirname + '/public/backend/dashboard.html');
+});
 /*
 *  Booking Part
 *  Note: The default backend should check session status, if fail (unlogin), then should go to here.
 * */
+
+app.post("/booking", function (request, response) {
+    //response.render(__dirname + '/public/backend/dashboard.html');
+    if (request.body.constructor === Object && Object.keys(request.body).length === 0) {
+        response.render(__dirname + '/public/backend/dashboard.html');
+    }
+
+    var bookingType = request.body.bookingType;
+    //General Information
+    var bookingDatetime = request.body.bookingDatetime;
+    var bookingNote = request.body.bookingNote;
+    var patientID = request.body.patientID;
+    var doctorID = request.body.doctorID;
+    var bookingID = 0;
+    console.log('Prepared data');
+    con.query("INSERT INTO bookings (bookingType,bookingDatetime,bookingNote,patientID,doctorID) VALUES ('" +
+        bookingType + "','" + bookingDatetime + "','" + bookingNote + "','" + patientID + "','" + doctorID +
+        "')",
+        function (err, result, fields) {
+            if (!err) {
+                //console.log(rows[0]);
+                bookingID = result.insertId;
+                console.log('Insert booking successful: ID = ' + bookingID);
+                response.render(__dirname + '/public/backend/booking-finished.html');
+            }
+            else {
+                //ERROR
+                console.log('Database Error');
+                response.render(__dirname + '/public/backend/dashboard.html');
+            }
+        });
+
+});
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Application Start */
