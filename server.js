@@ -10,7 +10,7 @@
  */
 var express = require("express"),
     app = express();
-
+var ejs = require('ejs');
 /**
  * @MYSQL
  */
@@ -41,6 +41,9 @@ var con = mysql.createConnection({
     password: "OKVUNZLWUSILFSNB",
     database: "hivedb"
 });
+app.set('view engine', 'html');
+app.engine('html', ejs.renderFile);
+app.set('views', 'public');
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * @middlewares
@@ -89,16 +92,30 @@ app.post('/loginsubmit', function (req, res) {
                 console.log(rows[0]);
                 if (rows.length > 0 && rows[0].username === username) {
                     //Login fine
-                    res.sendFile(__dirname + '/public/backend/dashboard.html');
+                    var username = username;
+                    var patientID =rows[0].patientID;
+                    var firstname =rows[0].firstname;
+                    var lastname =rows[0].lastname;
+                    var address =rows[0].address;
+
+                    var suburb =rows[0].suburb;
+                    var postcode =rows[0].postcode;
+                    var country =rows[0].country;
+                    var dateofbirth =rows[0].dateofbirth;
+                    var phoneno =rows[0].phoneno;
+                    var email =rows[0].email;
+
+                    res.render(__dirname + '/public/backend/dashboard.html', {username:username,patientID:patientID,firstname:firstname,lastname:lastname,address:address,
+                        suburb:suburb,postcode:postcode,country:country,dateofbirth:dateofbirth,phoneno:phoneno,email:email});
                 }
                 else {
                     //Fail
-                    res.sendFile(__dirname + '/public/backend/login.html');
+                    res.render(__dirname + '/public/backend/login.html');
                 }
             }
             else {
                 //ERROR
-                res.sendFile(__dirname + '/public/backend/login.html');
+                res.render(__dirname + '/public/backend/login.html');
             }
         });
     }
@@ -108,16 +125,27 @@ app.post('/loginsubmit', function (req, res) {
                 console.log(rows);
                 if (rows.length > 0 && rows[0].username === username) {
                     //Login fine
-                    res.sendFile(__dirname + '/public/backend/dashboard.html');
+
+                    //var username = username;
+                    var doctorID =rows[0].doctorID;
+                    var firstname =rows[0].firstname;
+                    var lastname =rows[0].lastname;
+
+                    var dateofbirth =rows[0].dateofbirth;
+                    var phoneno =rows[0].phoneno;
+                    var email =rows[0].email;
+
+                    res.render(__dirname + '/public/backend/dashboard.html', {username:username,doctorID:doctorID,firstname:firstname,
+                                                lastname:lastname,dateofbirth:dateofbirth,phoneno:phoneno,email:email});
                 }
                 else {
                     //Fail
-                    res.sendFile(__dirname + '/public/backend/login.html');
+                    res.render(__dirname + '/public/backend/login.html');
                 }
             }
             else {
                 //ERROR
-                res.sendFile(__dirname + '/public/backend/login.html');
+                res.render(__dirname + '/public/backend/login.html');
             }
 
         });
@@ -289,6 +317,11 @@ app.post('/registersubmit', function (req, res) {
         });
     }
 });
+
+/*
+*  Booking Part
+*  Note: The default backend should check session status, if fail (unlogin), then should go to here.
+* */
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Application Start */
