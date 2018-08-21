@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HIVE - Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="assets/js/main.js"></script>
 
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,23 +18,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--favicon-->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
 </head>
 
 <body>
     <div class="row">
         <div class="col-lg-4"></div>
             <div class="logo">
-                <img src="images/logo.png" class="logo-img">
+                <img src="assets/images/logo.png" class="logo-img">
                 <div class="logo-title">HIVE</div>
             </div>
         <div class="col-lg-4"></div>
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-        <form action="#" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
+        <form action="login.html" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
             <div class="form-header">
                     <i class="fa fa-user"></i> Register
+            </div>
+            <div class="form-group">
+                <label>Register Type</label>
+                <select class="form-control" name="registertype" id="registertype" onchange="registerType()">
+                    <option>------</option>
+                    <option value="0">Patient</option>
+                    <option value="1">Doctor</option>
+                </select>
+            </div>
+            <div class="form-group clinicblock" id="clinicblock">
+                <label>Clinic Name</label>
+                <input type="text" class="form-control" name="clinicname" id="clinicname" placeholder="Enter clinic name">  
             </div>
             <div class="row">
             <div class="form-group  col-lg-6">

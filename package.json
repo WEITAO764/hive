@@ -11,7 +11,8 @@
     "body-parser": "^1.8.1",
     "csurf": "^1.9.0",
     "cookie-parser": "^1.4.3",
-    "client-sessions": "^0.8.0"
+    "client-sessions": "^0.8.0",
+    "ejs": "^2.6.1"
   },
   "main": "server.js",
   "scripts": {

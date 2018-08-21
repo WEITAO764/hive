@@ -10,7 +10,7 @@
  */
 var express = require("express"),
     app = express();
-
+var ejs = require('ejs');
 /**
  * @MYSQL
  */
@@ -41,6 +41,9 @@ var con = mysql.createConnection({
     password: "OKVUNZLWUSILFSNB",
     database: "hivedb"
 });
+app.set('view engine', 'html');
+app.engine('html', ejs.renderFile);
+app.set('views', 'public');
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * @middlewares
@@ -89,16 +92,41 @@ app.post('/loginsubmit', function (req, res) {
                 console.log(rows[0]);
                 if (rows.length > 0 && rows[0].username === username) {
                     //Login fine
-                    res.sendFile(__dirname + '/public/backend/dashboard.html');
+                    var username = username;
+                    var patientID = rows[0].patientID;
+                    var firstname = rows[0].firstname;
+                    var lastname = rows[0].lastname;
+                    var address = rows[0].address;
+
+                    var suburb = rows[0].suburb;
+                    var postcode = rows[0].postcode;
+                    var country = rows[0].country;
+                    var dateofbirth = rows[0].dateofbirth;
+                    var phoneno = rows[0].phoneno;
+                    var email = rows[0].email;
+
+                    res.render(__dirname + '/public/backend/dashboard.html', {
+                        username: username,
+                        patientID: patientID,
+                        firstname: firstname,
+                        lastname: lastname,
+                        address: address,
+                        suburb: suburb,
+                        postcode: postcode,
+                        country: country,
+                        dateofbirth: dateofbirth,
+                        phoneno: phoneno,
+                        email: email
+                    });
                 }
                 else {
                     //Fail
-                    res.sendFile(__dirname + '/public/backend/login.html');
+                    res.render(__dirname + '/public/backend/login.html');
                 }
             }
             else {
                 //ERROR
-                res.sendFile(__dirname + '/public/backend/login.html');
+                res.render(__dirname + '/public/backend/login.html');
             }
         });
     }
@@ -108,16 +136,29 @@ app.post('/loginsubmit', function (req, res) {
                 console.log(rows);
                 if (rows.length > 0 && rows[0].username === username) {
                     //Login fine
-                    res.sendFile(__dirname + '/public/backend/dashboard.html');
+
+                    //var username = username;
+                    var doctorID = rows[0].doctorID;
+                    var firstname = rows[0].firstname;
+                    var lastname = rows[0].lastname;
+
+                    var dateofbirth = rows[0].dateofbirth;
+                    var phoneno = rows[0].phoneno;
+                    var email = rows[0].email;
+
+                    res.render(__dirname + '/public/backend/dashboard.html', {
+                        username: username, doctorID: doctorID, firstname: firstname,
+                        lastname: lastname, dateofbirth: dateofbirth, phoneno: phoneno, email: email
+                    });
                 }
                 else {
                     //Fail
-                    res.sendFile(__dirname + '/public/backend/login.html');
+                    res.render(__dirname + '/public/backend/login.html');
                 }
             }
             else {
                 //ERROR
-                res.sendFile(__dirname + '/public/backend/login.html');
+                res.render(__dirname + '/public/backend/login.html');
             }
 
         });
@@ -289,6 +330,93 @@ app.post('/registersubmit', function (req, res) {
         });
     }
 });
+
+app.get("/dashboard", function (request, response) {
+    response.sendFile(__dirname + '/public/backend/dashboard.html');
+});
+/*
+*  Booking Part
+*  Note: The default backend should check session status, if fail (unlogin), then should go to here.
+* */
+
+app.post("/booking", function (request, response) {
+    //response.render(__dirname + '/public/backend/dashboard.html');
+    if (request.body.constructor === Object && Object.keys(request.body).length === 0) {
+        response.render(__dirname + '/public/backend/dashboard.html');
+    }
+
+    var bookingType = request.body.bookingType;
+    //General Information
+    var bookingDatetime = request.body.bookingDatetime;
+    var bookingNote = request.body.bookingNote;
+    var patientID = request.body.patientID;
+    var doctorID = request.body.doctorID;
+    var bookingID = 0;
+    console.log('Prepared data');
+    con.query("INSERT INTO bookings (bookingType,bookingDatetime,bookingNote,patientID,doctorID) VALUES ('" +
+        bookingType + "','" + bookingDatetime + "','" + bookingNote + "','" + patientID + "','" + doctorID +
+        "')",
+        function (err, result, fields) {
+            if (!err) {
+                //console.log(rows[0]);
+                bookingID = result.insertId;
+                console.log('Insert booking successful: ID = ' + bookingID);
+                response.render(__dirname + '/public/backend/booking-finished.html');
+            }
+            else {
+                //ERROR
+                console.log('Database Error');
+                response.render(__dirname + '/public/backend/dashboard.html');
+            }
+        });
+
+});
+
+/*
+*  Payment Part
+*  Note: The default backend should check session status, if fail (unlogin), then should go to here.
+* */
+app.post("/payment", function (request, response) {
+    //response.render(__dirname + '/public/backend/dashboard.html');
+    if (request.body.constructor === Object && Object.keys(request.body).length === 0) {
+        response.render(__dirname + '/public/backend/dashboard.html');
+    }
+
+    var bookingID = request.body.bookingType;
+    //General Information
+    var paymentType = request.body.paymentType;
+    var ccType = request.body.ccType;
+    var ccName = request.body.ccName;
+    var ccExpiry = request.body.ccExpiry;
+    var ccCVV = request.body.ccCVV;
+    var ddBSB = request.body.ddBSB;
+    var ddName = request.body.ddName;
+    var ddNumber = request.body.ddNumber;
+    var ptBSB = request.body.ptBSB;
+    var ptName = request.body.ptName;
+    var ptNumber = request.body.ptNumber;
+    var paymentID = 0;
+    console.log('Prepared data');
+    con.query("INSERT INTO payments (bookingID,paymentType,ccType,ccName,ccExpiry,ccCVV,ddBSB,ddName," +
+        "ddNumber,ptBSB,ptName,ptNumber) VALUES ('" + bookingID + "','" + paymentType + "','" + ccType + "','" +
+        ccName + "','" + ccExpiry + "','" + ccCVV + "','" + ddBSB + "','" + ddName + "','" +
+        ddNumber + "','" + ptBSB + "','" + ptName + "','" + ptNumber + "')",
+        function (err, rows, fields) {
+            if (!err) {
+                //console.log(rows[0]);
+                paymentID = result.insertId;
+                console.log('Insert payment successful: ID = ' + paymentID);
+                response.render(__dirname + '/public/backend/payment-finished.html');
+            }
+            else {
+                //ERROR
+                console.log('Database Error');
+                response.render(__dirname + '/public/backend/dashboard.html');
+            }
+        });
+
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Application Start */
