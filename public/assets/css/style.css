@@ -1,0 +1,138 @@
+/*CSS Document*/
+
+body{  
+    font-family: "Raleway", sans-serif;
+}
+
+.header-top{
+    background-color: rgba(0, 0, 0, 0.2);
+    height:60px;
+    padding:0px 100px; 
+    position:absolute;
+    top:0px;
+    right:15px;
+    left:0px;
+}
+.btn{
+    margin:10px 0px 10px 10px;
+    float:right;
+}
+.header{
+    background-color: rgba(0, 0, 0, 0.2);
+    height:90px;
+    border:1px solid #888888;
+    padding:0px 100px;
+    position:absolute;
+    top:60px;
+    right:15px;
+    left:0px;
+ 
+}
+.logo{
+    text-align: center;
+    margin: 0 auto;
+}
+.logo a:hover{
+    text-decoration: none; 
+}
+.logo img{
+    width:60px;
+    height:65px;
+}
+.logo a .logo-title{
+    font-size:17px; 
+    position: relative;
+    top:-5px;
+    color:#12A3D9;
+}
+.menu li{
+    list-style-type:none;
+    float:right;
+    margin-left:60px;
+    font-weight: bold;
+    padding:31px 0px;
+   
+}
+.menu li a{
+    text-decoration: none;
+    color:#fff;
+    font-size: 15px;
+}
+.menu li a:hover{
+    color:#12A3D9;
+}
+.active{
+    border-bottom:4px solid #fff;
+}
+.carousel-caption h1{
+    position: relative;
+    bottom:250px;
+    right:300px;
+    font-size:70px;
+
+}
+.heading{
+    text-align: center;
+    color:#000;
+}
+.about{
+    padding: 50px 100px;
+    text-align:center;
+    line-height: 1.5em;
+    color:#999;
+}
+.services{
+ background-color:rgb(240,240,240);
+ padding:50px;
+}
+.service-blocks{
+    background-color: #fff;
+    height:300px;
+    margin:20px 50px;
+    padding:40px;
+    text-align: center;
+    border-radius:100%;
+    box-shadow: 5px 5px 5px #000;
+    transition: 0.5s 0s linear;
+}
+.service-blocks:hover{
+    transform: scale(1.1,1.1);
+}
+.service-icons{
+    margin:0 auto;
+    width:60px;
+    height:60px;
+    margin-bottom:20px;
+}
+.service-icons img{
+    width:60px;
+    height:60px;
+}
+.service-blocks span{
+    color:#999;
+}
+/*---login, register, booking forms-----*/
+.form{
+    width:100%;
+    height:100%;
+    border: 1px solid #CCC;
+    padding: 20px 50px;
+    box-shadow: 5px 5px 15px #888888;
+}
+.form-header{
+    text-align: center;
+    color:#CCC;
+    font-size:17px;
+    width:auto;
+    height:60px;
+}
+.clinicblock{
+    display: none;
+}
+.footer{
+    background-color: #0D1A2F;
+    color:#CCC;
+    text-align: center;
+    padding: 20px 0;
+}
+
