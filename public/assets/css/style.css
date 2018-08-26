@@ -3,7 +3,10 @@
 body{  
     font-family: "Raleway", sans-serif;
 }
-
+.head{
+    width:100%;
+    height:20px;
+}
 .header-top{
     background-color: rgba(0, 0, 0, 0.2);
     height:60px;
@@ -68,7 +71,6 @@ body{
     bottom:250px;
     right:300px;
     font-size:70px;
-
 }
 .heading{
     text-align: center;
@@ -110,6 +112,16 @@ body{
 .service-blocks span{
     color:#999;
 }
+.links:hover{
+    text-decoration: none;
+}
+.footer{
+    background-color: #0D1A2F;
+    color:#CCC;
+    text-align: center;
+    padding: 20px 0;
+}
+
 /*---login, register, booking forms-----*/
 .form{
     width:100%;
@@ -117,6 +129,7 @@ body{
     border: 1px solid #CCC;
     padding: 20px 50px;
     box-shadow: 5px 5px 15px #888888;
+    margin:20px 0px;
 }
 .form-header{
     text-align: center;
@@ -128,12 +141,7 @@ body{
 .clinicblock{
     display: none;
 }
-.footer{
-    background-color: #0D1A2F;
-    color:#CCC;
-    text-align: center;
-    padding: 20px 0;
-}
+
 /*--chat page--*/
 .header-chat{
     position: relative;
@@ -143,7 +151,7 @@ body{
     height:480px;
     border:1px solid #CCC;
     box-shadow: 5px 5px 5px #CCC;
-    margin:30px 0;
+    margin:20px 0;
 }
 .doctor-data{
     padding:30px;
@@ -168,8 +176,7 @@ body{
     border:1px solid #CCC;
     border-radius:10px;
 }
-.msg-box{
-    
+.msg-box{ 
     padding:20px 10px;
 }
 
