@@ -84,7 +84,7 @@ app.post('/loginsubmit', function (req, res) {
     var logintype = req.body.logintype;
     var username = req.body.username;
     var password = encrypt.sha1hash(req.body.password);
-    if (logintype === 0)
+    if (logintype === "0")
     //0 means patient and 1 means doctor
     {
         con.query('SELECT * from patients WHERE username = \"' + username + '\" AND password = \"' + password + '\"', function (err, rows, fields) {
@@ -199,7 +199,7 @@ app.post('/registersubmit', function (req, res) {
     var username = req.body.username;
     var password = encrypt.sha1hash(req.body.password);
     var email = req.body.email;
-    if (registertype === 1) {
+    if (registertype === "1") {
         //Well the doctor need a clinic Name
         var clinicname = req.body.clinicname;
     }
@@ -221,19 +221,24 @@ app.post('/registersubmit', function (req, res) {
     password = encrypt.sha1hash("password");
     email = "tes3@test.com";
 */
-    if (registertype === 0)
+    dateofbirth = "12081994";
+    console.log(registertype);
+    if (registertype === "0")
     //0 means patient and 1 means doctor
     {
         con.query('SELECT * from patients WHERE username = \"' + username + '\" OR email = \"' + email + '\"', function (err, rows, fields) {
             if (!err) {
+                console.log("NO ERROR");
                 console.log(rows);
                 if (rows.length > 0) {
                     //duplicate username
+                    console.log("rows.length > 0");
                     res.sendFile(__dirname + '/public/backend/login.html');
                 }
                 else {
                     //INSERT INTO patients (phoneno, email, username, password)
                     // VALUES (value1, value2, value3,...)
+                    console.log("rows.length < 0");
                     con.query("INSERT INTO patients (username,password,firstname,lastname,address,suburb,postcode,country," +
                         "dateofbirth,phoneno,email) VALUES ('" + username + "','" + password + "','" + firstname + "','" +
                         lastname + "','" + address + "','" + suburb + "','" + postcode + "','" + country + "','" +
