@@ -33,7 +33,8 @@
     </div>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-2 col-1"></div>
-        <form action="/loginsubmit" method="POST" class="form col-lg-4 col-md-4 col-sm-8 col-10">
+        <div class="form col-lg-4 col-md-4 col-sm-8 col-10">
+        <form action="/loginsubmit" method="POST">
             <div class="form-header">
                 <i class="fa fa-lock"></i> Sign In
                 
@@ -55,12 +56,13 @@
                 <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                 <span><a href="#">Forgot Password?</a></span>
             </div>
-            <button type="submit" class="btn btn-primary float-right">Login</button><br>
+            <button type="submit" class="btn btn-primary">Login</button><br>
         </form>
+        <form action="/register" method="GET">
+            <input type="submit" class="btn btn-primary" value="Don't have an account? Register" />
+        </form>
+        </div>
         <div class="col-lg-4 col-md-4 col-sm-2 col-1"></div>
     </div> 
-    <form action="/register" method="GET">
-        <input type="submit" value="Don't have an account? Register" />
-    </form>
 </body>
 </html>

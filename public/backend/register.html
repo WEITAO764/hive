@@ -34,7 +34,8 @@
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-        <form action="registersubmit" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
+        <div class="form col-lg-6 col-md-6 col-sm-8 col-10">
+        <form action="registersubmit" method="POST">
             <div class="form-header">
                     <i class="fa fa-user"></i> Register
             </div>
@@ -118,10 +119,11 @@
             </div>
             <button type="submit" class="btn btn-primary float-right">Submit</button><br> 
         </form>
-        <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-        </div> 
         <form action="/login" method="GET">
-            <input type="submit" value="Already have an account? Sign In" />
-        </form>  
+            <input type="submit" class="btn btn-primary" value="Already have an account? Sign In" />
+        </form> 
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
+        </div>  
 </body>
 </html>
