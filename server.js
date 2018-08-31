@@ -82,15 +82,20 @@ app.post('/loginsubmit', function (req, res) {
         res.sendFile(__dirname + '/public/backend/login.html');
     }
     var logintype = req.body.logintype;
+    console.log(logintype);
     var username = req.body.username;
+    console.log(username);
     var password = encrypt.sha1hash(req.body.password);
+    console.log(password);
     if (logintype === "0")
+
     //0 means patient and 1 means doctor
     {
         con.query('SELECT * from patients WHERE username = \"' + username + '\" AND password = \"' + password + '\"', function (err, rows, fields) {
             if (!err) {
                 console.log(rows[0]);
-                if (rows.length > 0 && rows[0].username === username) {
+
+                if (rows.length > 0) {
                     //Login fine
                     var username = username;
                     var patientID = rows[0].patientID;
@@ -134,7 +139,7 @@ app.post('/loginsubmit', function (req, res) {
         con.query('SELECT * from doctors WHERE username = \"' + username + '\" AND password = \"' + password + '\"', function (err, rows, fields) {
             if (!err) {
                 console.log(rows);
-                if (rows.length > 0 && rows[0].username === username) {
+                if (rows.length > 0) {
                     //Login fine
 
                     //var username = username;
@@ -246,7 +251,7 @@ app.post('/registersubmit', function (req, res) {
                         function (err, rows, fields) {
                             if (!err) {
                                 console.log(rows[0]);
-                                if (rows.length > 0 && rows[0].username === username) {
+                                if (rows.length > 0) {
                                     //Login fine
                                     res.sendFile(__dirname + '/public/backend/dashboard.html');
                                 }
