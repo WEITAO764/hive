@@ -32,59 +32,30 @@
 
             </div>
             <div class="col-lg-2">
-                <h4><b>Welcome <%= firstname %></b></h4>
+                <h4 class="user"><b>Welcome <span class=""><%= firstname %></span></b></h4>
             </div>
         </div>
 
       <!--end of header -->
-      <div>
-        <h1>Details</h1>
-        <%= firstname %>
-        <%= lastname %>
-        <%= username %>
-        <%= email %>
-        <%= phoneno %>
-        
-      </div>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="doctor-list col-md-8">
+            <ul>
+              <li><span>Doctor A</span><button class="btn btn-sm btn-primary">Book</button></li>
+              <li><span>Doctor B</span><button class="btn btn-sm btn-primary">Book</button></li>
+              <li><span>Doctor C</span><button class="btn btn-sm btn-primary">Book</button></li>
+              <li><span>Doctor D</span><button class="btn btn-sm btn-primary">Book</button></li>
+              <li><span>Doctor E</span><button class="btn btn-sm btn-primary">Book</button></li>
+              <li><span>Doctor F</span><button class="btn btn-sm btn-primary">Book</button></li>
+            </ul>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
 
-      <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-          <form action="/booking" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
-              <div class="form-header">
-                  <i class="fa fa-calendar"></i> Booking
-              </div>
-              <div class="form-group">
-                  <label>Booking Type</label>
-                  <select class="form-control" name="bookingType" id="bookingtype">
-                      <option>------</option>
-                      <option value="1">Standard</option>
-                      <option value="2">Long</option>
-                      <option value="3">Special</option>
-                  </select>
-              </div>
-              <div class="row">
-              <div class="form-group  col-lg-12">
-                  <label>Date</label>
-                  <input type="datetime-local" class="form-control" name="bookingDatetime" id="bookingDatetime">
-              </div>
-              </div>
-             <div class="row">
-              <div class="form-group col-lg-6">
-                      <label>Patient's ID</label>
-                      <input type="text" class="form-control" name="patientID" id="patientID" placeholder="Enter your ID">
-              </div>
-              <div class="form-group col-lg-6">
-                      <label>Doctor's ID</label>
-                      <input type="text" class="form-control" name="doctorID" id="doctorID" placeholder="Enter doctor's ID">
-              </div>
-             </div>
-             <div class="form-group">
-                  <label>Booking Note</label>
-                  <textarea class="form-control" rows="6" name="bookingNote" id="bookingNote"></textarea>
-              </div>
-              <input type="submit" class="btn btn-primary float-right" value="Book"/>
-          </form>
-          <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-      </div>  
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-2"><button class="btn btn-primary btn-circle">Payment</button></div>
+          <div class="col-md-5"></div>
+        </div>
 </body>
 </html>
