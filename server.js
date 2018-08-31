@@ -348,6 +348,9 @@ app.get("/dashboard", function (request, response) {
 *  Booking Part
 *  Note: The default backend should check session status, if fail (unlogin), then should go to here.
 * */
+app.get("/booking", function (request, response) {
+    response.sendFile(__dirname + '/public/backend/booking.html');
+});
 
 app.post("/booking", function (request, response) {
     //response.render(__dirname + '/public/backend/dashboard.html');
