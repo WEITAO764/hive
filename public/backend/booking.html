@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HIVE - Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css" />
     <script src="js/main.js"></script>
 
    <!--bootstrap--> 
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--favicon-->
-    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="shortcut icon" href="../assets/images/favicon.png">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <div class="col-lg-4"></div>
             <div class="logo col-lg-4">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" class="logo-img">
+                    <img src="../assets/images/logo.png" class="logo-img">
                     <div class="logo-title">HIVE</div>
                 </a>
             </div>
@@ -35,42 +35,36 @@
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
-        <form action="booking-finished.html" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
+        <form action="/booking" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
             <div class="form-header">
                 <i class="fa fa-calendar"></i> Booking
             </div>
             <div class="form-group">
                 <label>Booking Type</label>
-                <select class="form-control" name="bookingtype" id="bookingtype">
+                <select class="form-control" name="bookingType">
                     <option>------</option>
                     <option value="1">Standard</option>
                     <option value="2">Long</option>
                     <option value="3">Special</option>
                 </select>
             </div>
-            <div class="row">
-            <div class="form-group  col-lg-6">
+            <div class="form-group">
                 <label>Date</label>
-                <input type="date" class="form-control" name="bookingdate" id="bookingdate">
-            </div>
-            <div class="form-group  col-lg-6">
-                    <label>Time</label>
-                    <input type="time" class="form-control" name="bookingtime" id="bookingtime">
-            </div>
+                <input type="text" class="form-control" name="bookingDatetime">
             </div>
            <div class="row">
             <div class="form-group col-lg-6">
                     <label>Patient's ID</label>
-                    <input type="text" class="form-control" name="patientID" id="patientID" placeholder="Enter your ID">
+                    <%= patientID %>
             </div>
             <div class="form-group col-lg-6">
                     <label>Doctor's ID</label>
-                    <input type="text" class="form-control" name="doctorID" id="doctorID" placeholder="Enter doctor's ID">
+                    <%= doctorID %>
             </div>
            </div>
            <div class="form-group">
                 <label>Booking Note</label>
-                <textarea class="form-control" rows="6" name="bookingnote" id="bookingnote"></textarea>
+                <textarea class="form-control" rows="6" name="bookingNote"></textarea>
             </div>
             <button type="submit" class="btn btn-primary float-right">Book</button><br>
         </form>
