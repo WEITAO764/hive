@@ -200,6 +200,12 @@ body{
     padding:0px 20px;
     background-color: aliceblue;
 }
-
+.booking-status{
+    background-color:rgb(240,240,240);
+    padding:50px;
+}
+table{
+    margin-top:40px;
+}
 
 
