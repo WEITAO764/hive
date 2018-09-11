@@ -33,6 +33,7 @@
             </div>
             <div class="col-lg-2 col-md-2">
                 <h4 class="user"><b>Welcome <span class="text-uppercase"><%= firstname %></span></b></h4>
+                <div><b>Patient ID: <%= patientID %></b></div>
             </div>
         </div>
 
@@ -43,43 +44,30 @@
             <ul>
               <li>
                 <span>Doctor A</span>
-                <form action="/booking" method="GET">
-                  <input type="hidden" value="001" name="doctorID"/>
-                  <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;"/>
+                <form action="/booking" method="GET" onsubmit="bookA()">
+                  <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookA()"/>
                 </form>
               </li>
               <li>
                   <span>Doctor B</span>
                   <form action="/booking" method="GET">
-                    
-                  <input type="hidden" value="002" name="doctorID"/>
-                    <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;"/>
+                    <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookB()"/>
                   </form>
                 </li>
                 <li>
                     <span>Doctor C</span>
                     <form action="/booking" method="GET">
-                      
-                  <input type="hidden" value="003" name="doctorID"/>
-                      <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;"/>
+                      <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookC()"/>
                     </form>
                   </li>
                   <li>
                       <span>Doctor D</span>
                       <form action="/booking" method="GET">
-                        
-                  <input type="hidden" value="004" name="doctorID"/>
-                        <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;"/>
+                        <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookD()"/>
                       </form>
                     </li>
-                    <li>
-                        <span>Doctor E</span>
-                        <form action="/booking" method="GET">
-                          
-                  <input type="hidden" value="005" name="doctorID"/>
-                          <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;"/>
-                        </form>
-                      </li>
+          
+           
             </ul>
           </div>
           <div class="col-lg-2 col-md-8"></div>
@@ -94,9 +82,7 @@
                   <th>Booking ID</th><th>Patient ID</th><th>Doctor ID</th><th>Booking Type</th><th>DateTime</th><th>Payment Status</th></tr>
               </tr>
               <tr>
-      
                 <td></td>
-                <td><%= patientID %></td>
                 <td></td>
                 <td></td>
                 <td></td>
