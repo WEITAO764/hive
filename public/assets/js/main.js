@@ -7,3 +7,7 @@ function registerType(){
         document.getElementById("clinicblock").style.display = "none";
     }
 }
+
+function bookA(){
+    document.getElementById("doctorID").value="001";
+}
