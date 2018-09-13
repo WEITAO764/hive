@@ -9,5 +9,5 @@ function registerType(){
 }
 
 function book(){
-    document.getElementById("doctorID").value="001";
+    this.form.elements['doctorID'].value="001";
 }
