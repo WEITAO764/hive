@@ -8,18 +8,10 @@ function registerType(){
     }
 }
 
-function book(){
-    this.form.elements['doctorID'].value="001";
+function setID(dID){   
+   localStorage.setItem("x",dID);
 }
 
-function getID(dID){
-alert(dID);
-var x=dID;
-return x;
-}
-
-function setID(){
-    alert("i am set ID");
-    var y=getID();
-    document.getElementById("doctorID").value=y;
+function getID(){
+    document.getElementById("doctorID").value=localStorage.getItem("x");
 }
