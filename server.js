@@ -430,6 +430,143 @@ app.post("/payment", function (request, response) {
 
 });
 
+/*
+* Data Fetch Section (Json get for Ajax call)
+ */
+
+//Personal information of Patient
+app.get("/patientInfo/:patientID", function (request, response) {
+
+    var patientID = request.params.patientID;
+    console.log(patientID);
+
+    con.query('SELECT * from patients WHERE patientID = \"' + patientID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Booking Data by Patient ID
+app.get("/bookingData/:patientID", function (request, response) {
+
+    var patientID = request.params.patientID;
+    console.log(patientID);
+
+    con.query('SELECT * from bookings WHERE patientID = \"' + patientID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Payment Data by Booking ID
+app.get("/paymentData/:bookingID", function (request, response) {
+
+    var bookingID = request.params.bookingID;
+    console.log(bookingID);
+
+    con.query('SELECT * from payments WHERE bookingID = \"' + bookingID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Doctor List
+app.get("/doctorList", function (request, response) {
+
+    var doctorID = request.params.doctorID;
+    console.log(doctorID);
+
+    con.query('SELECT * from doctors', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Personal information of Doctor
+app.get("/doctorInfo/:doctorID", function (request, response) {
+
+    var doctorID = request.params.doctorID;
+    console.log(doctorID);
+
+    con.query('SELECT * from doctors WHERE doctorID = \"' + doctorID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Booking Data by DoctorID
+app.get("/bookingDataD/:doctorID", function (request, response) {
+
+    var doctorID = request.params.doctorID;
+    console.log(doctorID);
+
+    con.query('SELECT * from bookings WHERE doctorID = \"' + doctorID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Clinic information by clinicID
+app.get("/clinicInfo/:clinicID", function (request, response) {
+
+    var clinicID = request.params.clinicID;
+    console.log(clinicID);
+
+    con.query('SELECT * from clinics WHERE clinicID = \"' + clinicID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Application Start */
