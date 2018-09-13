@@ -8,6 +8,6 @@ function registerType(){
     }
 }
 
-function bookA(){
+function book(){
     document.getElementById("doctorID").value="001";
 }
