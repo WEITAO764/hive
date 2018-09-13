@@ -44,30 +44,40 @@
             <ul>
               <li>
                 <span>Doctor A</span>
-                <form action="/booking" method="GET" onsubmit="bookA()">
-                  <input type="hidden" name="pID" value="<%= patientID %>" id="pID"/>
-                  <input type="hidden" name="dID" value="001" id="dID"/>
-                  <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="getID(01)"/>
+                <form action="/booking" method="GET">
+                  <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(01)"/>
                 </form>
               </li>
               <li>
                   <span>Doctor B</span>
                   <form action="/booking" method="GET">
-                    <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookB()"/>
+                    <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(02)"/>
                   </form>
                 </li>
                 <li>
                     <span>Doctor C</span>
                     <form action="/booking" method="GET">
-                      <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookC()"/>
+                      <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(03)"/>
                     </form>
                   </li>
                   <li>
                       <span>Doctor D</span>
                       <form action="/booking" method="GET">
-                        <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookD()"/>
+                        <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(04)"/>
                       </form>
                     </li>
+                    <li>
+                        <span>Doctor E</span>
+                        <form action="/booking" method="GET">
+                          <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(05)"/>
+                        </form>
+                      </li>
+                      <li>
+                          <span>Doctor F</span>
+                          <form action="/booking" method="GET">
+                            <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(06)"/>
+                          </form>
+                        </li>
           
            
             </ul>
