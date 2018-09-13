@@ -45,6 +45,7 @@
               <li>
                 <span>Doctor A</span>
                 <form action="/booking" method="GET" onsubmit="bookA()">
+                  <input type="hidden" name="pID" value="<%= patientID %>" id="pID"/>
                   <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="bookA()"/>
                 </form>
               </li>
@@ -70,7 +71,7 @@
            
             </ul>
           </div>
-          <div class="col-lg-2 col-md-8"></div>
+          <div class="col-lg-2 col-md-2"></div>
         </div>
 
         <div class="booking-status row">
@@ -93,5 +94,7 @@
           </div>
           <div class="col-lg-2 col-md-2"></div>
         </div>
+        <button class="btn btn-primary center">Join Chat</button>
+        
 </body>
 </html>
