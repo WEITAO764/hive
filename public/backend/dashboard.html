@@ -23,6 +23,9 @@
 <script>
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
+
+          var myJSON = JSON.stringify(result);
+document.getElementById("demo").innerHTML = myJSON;
             $.each(result, function(i, field){
                 $("div").append(field + " ");
         
@@ -119,7 +122,7 @@ $(document).ready(function(){
         </div>
         <button class="btn btn-primary center">Join Chat</button>
 
-        <div></div>
+        <div id="demo"></div>
 
         
 </body>
