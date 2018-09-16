@@ -24,11 +24,11 @@
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
 
-          alert(result);
-          alert(result.firstname);
+         var myJSON = JSON.stringify(result);
+       alert(myJSON);
 
-          var obj=JSON.stringify(result);
-          alert(obj);
+       var obj = JSON.parse(myJSON);
+          alert(obj.firstname);
 
        
        
