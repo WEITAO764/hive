@@ -24,13 +24,15 @@
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
 
-          alert(result.firstname);
-          alert(result[1]);
+          var obj = JSON.parse(result);
+          document.getElementById("demo").innerHTML = obj.firstname + ", " + obj.lastname;
+
           var myJSON = JSON.stringify(result);
-          document.getElementById("demo").innerHTML = myJSON;
-          $.each(result, function(i, field){
-                $("div").append(field + " ");
-            });
+          var obj = JSON.parse(myJSON);
+          document.getElementById("demo").innerHTML += obj.firstname + ", " + obj.lastname;
+          
+
+       
        
     });
 });
