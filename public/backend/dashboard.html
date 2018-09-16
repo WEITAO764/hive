@@ -24,7 +24,8 @@
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
 
-          
+          alert(result.firstname);
+          alert(result[1]);
           var myJSON = JSON.stringify(result);
           document.getElementById("demo").innerHTML = myJSON;
           $.each(result, function(i, field){
