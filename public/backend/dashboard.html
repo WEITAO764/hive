@@ -22,20 +22,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-        $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(json){
+        $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
 
 
-    
-    alert(json.result);
-    $.each(json.list, function (i, fb) {
-        alert(fb.result);
+         var myJSON = JSON.stringify(result);
+       alert(myJSON);
+
+       var obj = JSON.parse(myJSON);
+          alert(obj.firstname);
+
+       
+       
     });
 });
-
-       
-       
-    });
-
 </script>
 </head>
 
