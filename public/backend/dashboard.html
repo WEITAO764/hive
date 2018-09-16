@@ -24,7 +24,7 @@
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
 
-          var myJSON = JSON.stringify(result[0]);
+          var myJSON = JSON.stringify(result.firstname);
           document.getElementById("demo").innerHTML = myJSON;
        
     });
