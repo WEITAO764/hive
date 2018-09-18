@@ -25,6 +25,8 @@ $(document).ready(function(){
 
     $.each(data, function(index, element) {
         
+      $('#booking-table').append('<tr><td>'+element.bookingID+'</td></tr>');
+
             alert(element.bookingID);
        
     });
@@ -107,7 +109,7 @@ $(document).ready(function(){
           <h2 class="heading">Booking Status</h2>
           <div class="col-lg-2 col-md-2"></div>
           <div class="col-lg-8 col-md-8">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" id="booking-table">
               <tr>
                   <th>Booking ID</th><th>Patient ID</th><th>Doctor ID</th><th>Booking Type</th><th>DateTime</th><th>Payment Status</th></tr>
               </tr>
