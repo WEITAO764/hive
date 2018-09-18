@@ -30,8 +30,7 @@ $(document).ready(function(){
       $('#booking-table').append('<td>'+element.bookingDatetime+'</td>');
       $('#booking-table').append('<td>'+element.bookingNote+'</td>');
       $('#booking-table').append('<td>'+element.patientID+'</td>');
-      $('#booking-table').append('<td>'+element.DoctorID+'</td>');
-      $('#booking-table').append('<td><button class="btn btn-success">Pay Now</button></td>');
+      $('#booking-table').append('<td>'+element.doctorID+'</td>');
       $('#booking-table').append('</tr>');
       
 
@@ -119,7 +118,7 @@ $(document).ready(function(){
           <div class="col-lg-8 col-md-8">
             <table class="table table-bordered table-striped" id="booking-table">
               <tr>
-                  <th>Booking ID</th><th>Booking Type</th><th>Date Time</th><th>Booking Note</th><th>Patient ID</th><th>Patient ID</th><th>Payment Status</th></tr>
+                  <th>Booking ID</th><th>Booking Type</th><th>Date Time</th><th>Booking Note</th><th>Patient ID</th><th>Patient ID</th></tr>
               </tr>
             </table>
           </div>
