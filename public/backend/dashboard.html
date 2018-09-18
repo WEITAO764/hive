@@ -24,13 +24,15 @@ $(document).ready(function(){
 
 
     $.each(data, function(index, element) {
-      $('tbody').append('<tr><td>'+element.bookingID+'</td>');
+      $('tbody').append('<tr>');
+      $('tbody').append('<td>'+element.bookingID+'</td>');
       $('tbody').append('<td>'+element.bookingType+'</td>');
       $('tbody').append('<td>'+element.bookingDatetime+'</td>');
       $('tbody').append('<td>'+element.bookingNote+'</td>');
       $('tbody').append('<td>'+element.patientID+'</td>');
       $('tbody').append('<td>'+element.doctorID+'</td>');
-      $('tbody').append('<td><button class="btn btn-success">Pay Now</button></td></tr>');
+      $('tbody').append('<td><button class="btn btn-success">Pay Now</button></td>');
+      $('tbody').append('</tr>');
       
 
             //alert(element.bookingID);
