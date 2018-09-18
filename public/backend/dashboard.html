@@ -20,12 +20,12 @@
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 <script>
 $(document).ready(function(){
-        $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
+        $.getJSON("https://hiveapp.mybluemix.net/bookingData/78", function(data){
 
 
     $.each(data, function(index, element) {
         
-            alert(element[5]);
+            alert(element.bookingID);
        
     });
 
