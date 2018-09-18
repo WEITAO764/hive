@@ -20,17 +20,15 @@
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 <script>
 $(document).ready(function(){
-        $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(result){
+        $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
 
 
-         
+    $.each(data, function(index, element) {
+        $('body').append($('<div>', {
+            text: element.firstname
+        }));
+    });
 
-
-       var newData=JSON.parse(result);
-       alert(newData);
-       
- 
-});
 
 });
 
