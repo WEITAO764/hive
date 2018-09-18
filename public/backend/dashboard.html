@@ -28,10 +28,8 @@ $(document).ready(function(){
          var myJSON = JSON.stringify(result);
        alert(myJSON);
 
-       var obj = JSON.parse(myJSON);
-          alert(obj.firstname);
-
-       
+       var newData=JSON.parse(result).firstname;
+       alert(newData);
        
     });
 });
