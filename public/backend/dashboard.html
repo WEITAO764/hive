@@ -61,7 +61,7 @@ $(document).ready(function(){
 
         $.each(data, function(index, elem) {
 
-          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
         }); 
 
@@ -125,7 +125,7 @@ $.each(data, function(index, element) {
             <table class="table table-bordered table-striped" id="booking-table">
               
               <thead>
-                  <th>Booking ID</th><th>Booking Type</th><th>Date Time (DDMMYYYY)</th><th>Booking Note</th><th>Doctor ID</th><th>Payment</th><th>Diagnose</th></tr>
+                  <th>Booking ID</th><th>Booking Type</th><th>Date Time (DDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th>Payment</th><th>Diagnose</th></tr>
               </thead>
               <tbody>
               </tbody>
