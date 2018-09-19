@@ -22,6 +22,8 @@
 $(document).ready(function(){
         $.getJSON("https://hiveapp.mybluemix.net/bookingData/78", function(data){
 
+          //get booking data
+
     $.each(data, function(index, element) {
       
       var booktypename="";
@@ -39,6 +41,20 @@ $(document).ready(function(){
       $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+element.patientID+'</td><td>'+element.doctorID+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
     });
+
+
+}); 
+
+//get doctor list
+
+       $.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
+
+$.each(data, function(index, element) {
+  
+
+  $('ul').append('<li><span>'+element.firstname+' '+element.lastname+'</span><form action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID('+element.doctorID+')"/></form></li>');
+
+});
 
 
 });
@@ -71,24 +87,6 @@ $(document).ready(function(){
           <div class="col-lg-2 col-md-2"></div>
           <div class="doctor-list col-lg-8 col-md-8">
             <ul>
-              <li>
-                <span>Doctor A</span>
-                <form action="/booking" method="GET">
-                  <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(01)"/>
-                </form>
-              </li>
-              <li>
-                  <span>Doctor B</span>
-                  <form action="/booking" method="GET">
-                    <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(50)"/>
-                  </form>
-                </li>
-                <li>
-                    <span>Doctor C</span>
-                    <form action="/booking" method="GET">
-                      <input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID(57)"/>
-                    </form>
-                  </li>
            
             </ul>
           </div>
