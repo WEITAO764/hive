@@ -23,29 +23,23 @@ $(document).ready(function(){
 
   //get patient info
 
-   $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
+  $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
 
-$.each(data, function(index, element) {
-  
-
-  $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
-  $('#userID').append('Patient ID: '+element.patientID);
-
-});
-
-
-}); 
-
-
+    $.each(data, function(index, element) {
+      $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
+      $('#userID').append('Patient ID: '+element.patientID);
+    });
+  }); 
 
   //get booking data
 
-        $.getJSON("https://hiveapp.mybluemix.net/bookingData/78", function(data){
+  $.getJSON("https://hiveapp.mybluemix.net/bookingData/78", function(bookdata){
 
-    $.each(data, function(index, element) {
+    $.each(bookdata, function(bookindex, element) {
       
       var booktypename="";
       var booktype=element.bookingType;
+      
       if(booktype==1){
         booktypename="Standard";
       }
@@ -55,32 +49,28 @@ $.each(data, function(index, element) {
       else{
         booktypename="Special";
       }
-
-//
+      
+      //
       var docID=element.doctorID;
 
       var str1 = "https://hiveapp.mybluemix.net/doctorInfo/";
       var str2=docID.toString();
-    var url = str1.concat(str2);
-
-
+      var url = str1.concat(str2);
+      
       $.getJSON(url, function(data){
 
-         $.each(data, function(index, elem) {
+        $.each(data, function(index, elem) {
 
- $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
         }); 
 
-         }); 
+      }); 
 
-        //
-    
-     
+      //
     });
-
-
-}); 
+    
+  }); 
 
 //get doctor list
 
