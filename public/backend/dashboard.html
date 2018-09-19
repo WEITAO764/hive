@@ -27,7 +27,7 @@ $(document).ready(function(){
 
     $.each(data, function(index, element) {
       $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
-      $('#userID').append('Patient ID: '+element.patientID);
+      
     });
   }); 
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
 
  
   var str1 = "https://hiveapp.mybluemix.net/bookingData/";
-  var str2 ="78";
+  var str2 =document.getElementById("userID").innerHTML;
   var paturl = str1.concat(str2);
 
   $.getJSON(paturl, function(bookdata){
