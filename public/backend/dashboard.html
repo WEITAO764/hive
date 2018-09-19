@@ -38,7 +38,7 @@ $(document).ready(function(){
   var str2 ="78";
   var paturl = str1.concat(str2);
 
-  $.getJSON("paturl", function(bookdata){
+  $.getJSON(paturl, function(bookdata){
 
     $.each(bookdata, function(bookindex, element) {
       
