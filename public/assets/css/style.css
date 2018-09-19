@@ -184,6 +184,9 @@ body{
 .user{
     color:#12A3D9;
 }
+.user-info{
+    font-weight: bold;
+}
 .doctor-list{
     border:1px solid #CCC;
     box-shadow: 5px 5px 5px #CCC;
