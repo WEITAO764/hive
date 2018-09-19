@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 
     $.each(data, function(index, element) {
-      $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+element.bookingType+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+element.patientID+'</td><td>'+element.doctorID+'</td><td><button class="btn btn-success">Pay Now</button></td></tr>');
+      $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+element.bookingType+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+element.patientID+'</td><td>'+element.doctorID+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
     });
 
