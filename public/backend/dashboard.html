@@ -33,7 +33,12 @@ $(document).ready(function(){
 
   //get booking data
 
-  $.getJSON("https://hiveapp.mybluemix.net/bookingData/78", function(bookdata){
+ 
+  var str1 = "https://hiveapp.mybluemix.net/bookingData/";
+  var str2 ="<% = patientID %>";
+  var paturl = str1.concat(str2);
+
+  $.getJSON("paturl", function(bookdata){
 
     $.each(bookdata, function(bookindex, element) {
       
@@ -119,13 +124,13 @@ $.each(data, function(index, element) {
         </div>
 
         <div class="booking-status row">
-          <h2 class="heading">Booking Status</h2>
+          <h2 class="heading">My Bookings</h2>
           <div class="col-lg-1 col-md-1"></div>
           <div class="col-lg-10 col-md-10">
             <table class="table table-bordered table-striped" id="booking-table">
               
               <thead>
-                  <th>Booking ID</th><th>Booking Type</th><th>Date Time (DDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th>Payment</th><th>Diagnose</th></tr>
+                  <th>Booking ID</th><th>Booking Type</th><th>Date Time (DDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>
               </thead>
               <tbody>
               </tbody>
