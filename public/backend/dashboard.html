@@ -55,9 +55,28 @@ $.each(data, function(index, element) {
       else{
         booktypename="Special";
       }
-    
-      $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+element.doctorID+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
+//
+      var docID=element.doctorID;
+
+      var str1 = "https://hiveapp.mybluemix.net/doctorInfo/";
+      var str2=docID.toString();
+    var url = str1.concat(str2);
+
+
+      $.getJSON(url, function(data){
+
+         $.each(data, function(index, elem) {
+
+ $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+'</td><td><button class="btn btn-success" id="paynow-btn" >Pay Now</button></td></td><td><button class="btn btn-primary" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+
+        }); 
+
+         }); 
+
+        //
+    
+     
     });
 
 
