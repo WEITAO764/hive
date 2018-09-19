@@ -35,7 +35,7 @@ $(document).ready(function(){
 
  
   var str1 = "https://hiveapp.mybluemix.net/bookingData/";
-  var str2 =document.getElementById("userID").innerHTML;
+  var str2 = $("#userID").html(); 
   var paturl = str1.concat(str2);
 
   $.getJSON(paturl, function(bookdata){
