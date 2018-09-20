@@ -66,7 +66,7 @@ $(document).ready(function(){
 
         $.each(data, function(index, elem) {
 
-          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-success paynow-btn" onclick="setID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
         }); 
 
@@ -100,7 +100,6 @@ $.each(data, function(index, element) {
             <div class="col-lg-1 col-md-1 logo">
               <a href="#">
                 <img src="../assets/images/logo.png">
-                <span class="logo-title">HIVE</span>
               </a>
             </div>
             <div class="col-lg-9 col-md-9">
