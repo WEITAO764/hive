@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HIVE - Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css" />
+    <script src="../assets/js/main.js"></script>
+
+   <!--bootstrap--> 
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--font awsome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="../assets/images/favicon.png">
+</head>
+
+<body onload="getbookingID();">
+    <div class="head"></div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+            <div class="logo col-lg-4">
+                <a href="index.html">
+                    <img src="../assets/images/logo.png" class="logo-img">
+                    <div class="logo-title">HIVE</div>
+                </a>
+            </div>
+        
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
+        <form action="/payment" method="POST" class="form col-lg-6 col-md-6 col-sm-8 col-10">
+            <div class="form-header">
+                <i class="fa fa-credit-card"></i> Booking
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>Booking ID</label>
+                        <input type="text" name="bookingID" id="bookingID" class="form-control" readonly/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>Payment Type </label>
+                        <input type="text" name="paymentType" id="paymentType" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>cc Type</label>
+                        <input type="text" name="ccType" id="ccType" class="form-control"/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>cc Name </label>
+                        <input type="text" name="ccName" id="ccName" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>cc Expiry</label>
+                        <input type="text" name="ccExpiry" id="ccExpiry" class="form-control"/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>cc CVV </label>
+                        <input type="text" name="ccCVV" id="ccCVV" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>dd BSB</label>
+                        <input type="text" name="ddBSB" id="ddBSB" class="form-control"/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>dd Name </label>
+                        <input type="text" name="ddName" id="ddName" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>dd Number</label>
+                        <input type="text" name="ddNumber" id="ddNumber" class="form-control"/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>pt BSB </label>
+                        <input type="text" name="ptBSB" id="ptBSB" class="form-control"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                        <label>pt Name</label>
+                        <input type="text" name="ptName" id="ptName" class="form-control"/>
+                        
+                </div>
+                <div class="form-group col-lg-6">
+                        <label>pt Number</label>
+                        <input type="text" name="ptNumber" id="ptNumber" class="form-control"/>
+                </div>
+            </div>
+          
+            <input type="submit" class="btn btn-primary float-right" value="Pay"/><br>
+        </form>
+        <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
+    </div>   
+</body>
+</html>
