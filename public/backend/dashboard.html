@@ -21,11 +21,15 @@
 <script>
 $(document).ready(function(){
   
-  //get patient info
+  //get user data
 
-  $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
+  var url = "https://hiveapp.mybluemix.net/patientInfo/";
+  var userID = '<%-JSON.stringify(patientID) %>'; 
+  var userUrl = url.concat(patientID);
 
-    $.each(data, function(index, element) {
+  $.getJSON(userUrl, function(userdata){
+
+    $.each(userdata, function(index, element) {
       $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
       $('#userID').append('Patient ID: '+element.patientID);
     });
@@ -79,9 +83,9 @@ $(document).ready(function(){
 
 //get doctor list
 
-       $.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
+  $.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
 
-$.each(data, function(index, element) {
+  $.each(data, function(index, element) {
   
   $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+')"/></form></li>');
 
