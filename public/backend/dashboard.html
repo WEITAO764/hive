@@ -20,9 +20,7 @@
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 <script>
 $(document).ready(function(){
-  var test = '<%-JSON.stringify(firstname) %>'; 
-
-  alert(test);
+  
   //get patient info
 
   $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
@@ -36,11 +34,11 @@ $(document).ready(function(){
   //get booking data
 
  
-  var str1 = "https://hiveapp.mybluemix.net/bookingData/";
-  var str2 ="78";
-  var paturl = str1.concat(str2);
+  var url = "https://hiveapp.mybluemix.net/bookingData/";
+  var patientID = '<%-JSON.stringify(patientID) %>'; 
+  var patientUrl = url.concat(patientID);
 
-  $.getJSON(paturl, function(bookdata){
+  $.getJSON(patientUrl, function(bookdata){
 
     $.each(bookdata, function(bookindex, element) {
       
