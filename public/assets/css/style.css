@@ -8,7 +8,7 @@ body{
     height:20px;
 }
 .header-top{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     height:60px;
     padding:0px 100px; 
     position:absolute;
@@ -16,12 +16,12 @@ body{
     right:15px;
     left:0px;
 }
-.btn{
+.header-top .btn{
     margin:10px 0px 10px 10px;
     float:right;
 }
 .header{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     height:90px;
     border:1px solid #888888;
     padding:0px 100px;
@@ -32,20 +32,11 @@ body{
 }
 .logo{
     text-align: center;
-    margin: 0 auto;
-}
-.logo a:hover{
-    text-decoration: none; 
+    margin: 5px auto;
 }
 .logo img{
-    width:60px;
-    height:65px;
-}
-.logo a .logo-title{
-    font-size:17px; 
-    position: relative;
-    top:-5px;
-    color:#12A3D9;
+    width:90px;
+    height:80px;
 }
 .menu li{
     list-style-type:none;
@@ -61,16 +52,24 @@ body{
     font-size: 15px;
 }
 .menu li a:hover{
-    color:#12A3D9;
+    color:#F7E06A;
 }
 .active{
     border-bottom:4px solid #fff;
+}
+.carousel-caption h2{
+    position: relative;
+    bottom:250px;
+    right:300px;
+    font-family:cursive;
+    font-size:45px;
 }
 .carousel-caption h1{
     position: relative;
     bottom:250px;
     right:300px;
-    font-size:70px;
+    font-family:cursive;
+    font-size: 60px;
 }
 .heading{
     text-align: center;
@@ -209,7 +208,6 @@ body{
 table{
     margin-top:40px;
 }
-
 .paynow-btn a{
     color:#fff;
     text-decoration: none;
