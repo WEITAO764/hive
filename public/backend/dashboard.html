@@ -96,47 +96,43 @@ $.each(data, function(index, element) {
 </head>
 
 <body>
-        <div class="header row" style="position: relative; top:0px;">
-            <div class="col-lg-1 col-md-1 logo">
+    <div class="row">
+        <div class="dash-column-left col-lg-3 col-md-3">
+            <div class="logo">
               <a href="#">
                 <img src="../assets/images/logo.png">
               </a>
             </div>
-            <div class="col-lg-9 col-md-9">
-
-            </div>
-            <div class="col-lg-2 col-md-2 user-info">
-                <h4 class="user" id="user-fname"></h4>
+            <div class="user-info">
+                <h4 class="user-fname" id="user-fname"></h4>
                 <div id="userID"></div>
             </div>
+            <div class="doctor-list">
+              <ul>
+             
+              </ul>
+            </div>
         </div>
+        <!--end of left column -->
+        <div class="booking-status col-md-9 col-lg-9">
+            <h2 class="heading">My Bookings</h2>
+            <div class="col-lg-1 col-md-1"></div>
+            <div class="col-lg-10 col-md-10">
+              <table class="table table-bordered table-striped" id="booking-table">
+                
+                <thead>
+                    <th>Booking ID</th><th>Booking Type</th><th>Date Time (HHMMDDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-lg-1 col-md-1"></div>
+          </div>     
+    </div>
+     
 
-      <!--end of header -->
-        <div class="row">
-          <div class="col-lg-2 col-md-2"></div>
-          <div class="doctor-list col-lg-8 col-md-8">
-            <ul>
-           
-            </ul>
-          </div>
-          <div class="col-lg-2 col-md-2"></div>
-        </div>
-
-        <div class="booking-status row">
-          <h2 class="heading">My Bookings</h2>
-          <div class="col-lg-1 col-md-1"></div>
-          <div class="col-lg-10 col-md-10">
-            <table class="table table-bordered table-striped" id="booking-table">
-              
-              <thead>
-                  <th>Booking ID</th><th>Booking Type</th><th>Date Time (DDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-lg-1 col-md-1"></div>
-        </div>     
+        
 </body>
 </html>
 
