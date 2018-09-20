@@ -12,6 +12,11 @@ function setID(dID){
    localStorage.setItem("x",dID);
 }
 
-function getID(){
+function getdoctorID(){
     document.getElementById("doctorID").value=localStorage.getItem("x");
 }
+
+function getbookingID(){
+    document.getElementById("bookingID").value=localStorage.getItem("x");
+}
+
