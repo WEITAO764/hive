@@ -180,33 +180,44 @@ body{
 }
 
 /*--dashboard--*/
-.user{
-    color:#12A3D9;
+.dash-column-left{
+    background-color: rgba(0,0,0,0.8);
 }
 .user-info{
     font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top:40px;
+    color:#286090;
 }
 .doctor-list{
-    border:1px solid #CCC;
-    box-shadow: 5px 5px 5px #CCC;
-    margin:20px 0;
-    padding:20px;
+    margin:100px auto;
+    width:100%;
 }
-.doctor-list ul li{
+.doctor-list h4{
+    text-align: center;
+    color: #fff;   
+}
+.doctor-list li{
     font-weight: bold;
     list-style-type: none;
-    margin-top:10px;
-    font-size:20px;
-    height:50px;
-    padding:0px 20px;
-    background-color: aliceblue;
+    font-size:15px;
+    padding: 7px;
+    width:100%;
+    background-color: #999;
+    border-bottom:1px solid #ccc;
 }
-.booking-status{
+.dash-column-right{
     background-color:rgb(240,240,240);
-    padding:50px;
+    padding:20px;
 }
-table{
+.booking-table{
     margin-top:40px;
+    text-align: center;
+}
+.booking-table th{
+    background: grey;
+    text-align: center;
 }
 .paynow-btn a{
     color:#fff;
