@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 $.each(data, function(index, element) {
   
-  $('ul').append('<li><span>'+element.firstname+' '+element.lastname+'</span><form action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px; float:right;" onclick="setID('+element.doctorID+')"/></form></li>');
+  $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.bookingID+')"/></form></li>');
 
 });
 
@@ -98,6 +98,8 @@ $.each(data, function(index, element) {
 <body>
     <div class="row">
         <div class="dash-column-left col-lg-3 col-md-3">
+            <div class="head"></div>
+            <div class="head"></div>
             <div class="logo">
               <a href="#">
                 <img src="../assets/images/logo.png">
@@ -107,27 +109,28 @@ $.each(data, function(index, element) {
                 <h4 class="user-fname" id="user-fname"></h4>
                 <div id="userID"></div>
             </div>
-            <div class="doctor-list">
-              <ul>
-             
-              </ul>
-            </div>
+              <ul class="doctor-list">
+                  <h4>Available Doctors</h4>
+                  <li class="row">
+                        <div class="col-lg-8 col-md-8">test test</div>
+                        <form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary"/></form></li>
+                        <li class="row">
+                            <div class="col-lg-8 col-md-8">test test</div>
+                            <form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary"/></form></li>
+                      </ul>
         </div>
         <!--end of left column -->
-        <div class="booking-status col-md-9 col-lg-9">
+        <div class="dash-column-right col-md-9 col-lg-9">
             <h2 class="heading">My Bookings</h2>
-            <div class="col-lg-1 col-md-1"></div>
-            <div class="col-lg-10 col-md-10">
-              <table class="table table-bordered table-striped" id="booking-table">
+              <table class="table table-bordered table-striped booking-table" id="booking-table">
                 
                 <thead>
-                    <th>Booking ID</th><th>Booking Type</th><th>Date Time (HHMMDDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>
+                    <th>Booking ID</th><th>Booking Type</th><th>TimeDate (HHMMDDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>
                 </thead>
                 <tbody>
                 </tbody>
               </table>
             </div>
-            <div class="col-lg-1 col-md-1"></div>
           </div>     
     </div>
      
