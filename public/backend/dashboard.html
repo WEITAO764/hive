@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 $.each(data, function(index, element) {
   
-  $('ul').append('<li><span>'+element.firstname+' '+element.lastname+'</span><form action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px;" onclick="setID('+element.doctorID+')"/></form></li>');
+  $('ul').append('<li><span>'+element.firstname+' '+element.lastname+'</span><form action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" style="position: relative;top:-25px; float:right;" onclick="setID('+element.doctorID+')"/></form></li>');
 
 });
 
