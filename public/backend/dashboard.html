@@ -20,7 +20,9 @@
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 <script>
 $(document).ready(function(){
+  var test = '<%-JSON.stringify(firstname) %>'; 
 
+  alert(test);
   //get patient info
 
   $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
