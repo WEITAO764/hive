@@ -210,4 +210,13 @@ table{
     margin-top:40px;
 }
 
+.paynow-btn a{
+    color:#fff;
+    text-decoration: none;
+}
+.paynow-btn a:hover{
+    color:#fff;
+    text-decoration: none;
+}
+
 
