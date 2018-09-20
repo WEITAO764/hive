@@ -25,7 +25,7 @@ $(document).ready(function(){
 
   var url = "https://hiveapp.mybluemix.net/patientInfo/";
   var userID = '<%-JSON.stringify(patientID) %>'; 
-  var userUrl = url.concat(patientID);
+  var userUrl = url.concat(userID);
 
   $.getJSON(userUrl, function(userdata){
 
