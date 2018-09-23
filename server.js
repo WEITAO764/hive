@@ -3,6 +3,8 @@
  * #Hive project core webservice
  *
  * DO NOT EDIT IF YOU DO NOT KNOW WHAT YOU ARE DOING
+ * VERSION: 1.9 Final
+ * RELEASE Candidate
  */
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /**
@@ -344,6 +346,7 @@ app.post('/registersubmit', function (req, res) {
 app.get("/dashboard", function (request, response) {
     response.sendFile(__dirname + '/public/backend/dashboard.html');
 });
+
 /*
 *  Booking Part
 *  Note: The default backend should check session status, if fail (unlogin), then should go to here.
@@ -432,9 +435,20 @@ app.post("/payment", function (request, response) {
 
 /*
 * Data Fetch Section (Json get for Ajax call)
+*
  */
-
-//Personal information of Patient
+/*
+*  INFORMATION
+*  - Personal information of Patient
+*  - Booking Data by Patient ID
+*  - Booking Data by Booking ID
+*  - Payment Data by Booking ID
+*  - Doctor List
+*  - Personal information of Doctor
+*  - Booking Data by DoctorID
+*  - Clinic information by clinicID
+*  */
+//
 app.get("/patientInfo/:patientID", function (request, response) {
 
     var patientID = request.params.patientID;
@@ -460,6 +474,25 @@ app.get("/bookingData/:patientID", function (request, response) {
     console.log(patientID);
 
     con.query('SELECT * from bookings WHERE patientID = \"' + patientID  + '\"', function (err, rows, fields) {
+        if (!err) {
+            console.log(rows);
+            response.send(rows);
+        }
+        else {
+            //ERROR
+            response.send('ERROR');
+        }
+
+    });
+});
+
+//Booking Data by Booking ID
+app.get("/bookingDataB/:bookingID", function (request, response) {
+
+    var bookingID = request.params.bookingID;
+    console.log(bookingID);
+
+    con.query('SELECT * from bookings WHERE bookingID = \"' + bookingID  + '\"', function (err, rows, fields) {
         if (!err) {
             console.log(rows);
             response.send(rows);
