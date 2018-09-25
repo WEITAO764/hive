@@ -44,14 +44,14 @@
         }
         
         function checkCookie() {
-            var user=getCookie("username");
-            if (user != "") {
-                alert("already exists" + user);
+            var newuID=getCookie("newuserID");
+            if (newuID != "") {
+                alert("already exists" + newuID);
             } else {
-               user = "inshakhowaja";
-               if (user != "" && user != null) {
-                   setCookie("username", user, 30);
-                   alert("new set"+user);
+               newuID = '<%-JSON.stringify(patientID) %>';
+               if (newuID != "" && newuID != null) {
+                   setCookie("newuserID", newuID, 30);
+                   alert("new set"+newuID);
                }
             }
         }
