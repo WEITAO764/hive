@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="../assets/images/favicon.png">
     <script>
 
-      document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+   
 
         function setCookie(cname,cvalue,exdays) {
             var d = new Date();
@@ -48,11 +48,12 @@
         function checkCookie() {
             var uID=getCookie("userID");
             if (uID != "") {
-                alert("already set "+uID);
+                alert("already cookie set "+uID);
             } else {
                uID = '<%-JSON.stringify(patientID) %>';
                if (uID != "" && uID != null) {
                    setCookie("userID", uID, 30);
+                   alert("new cookie set"+uID);
                }
             }
         }
