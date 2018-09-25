@@ -19,27 +19,6 @@
     <!--favicon-->
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 
-    <script>
-        $(document).ready(function(){
-        
-          //get patient ID
-        
-           $.getJSON("https://hiveapp.mybluemix.net/patientInfo/78", function(data){
-        
-        $.each(data, function(index, element) {
-          
-        
-            document.getElementById("patientID").value=element.patientID;
-        
-        });
-        
-        
-        }); 
-        
-        });
-         
-         
-        </script>
 </head>
 
 <body onload="getID();">
