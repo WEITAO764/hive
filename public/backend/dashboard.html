@@ -18,45 +18,6 @@
 
     <!--favicon-->
     <link rel="shortcut icon" href="../assets/images/favicon.png">
-    <script>
-
-        function setCookie(cname,cvalue,exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            var expires = "expires=" + d.toGMTString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-        
-        function getCookie(cname) {
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie);
-            var ca = decodedCookie.split(';');
-            for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-        
-        function checkCookie() {
-            var newuID=getCookie("newuserID");
-            if (newuID != "") {
-                alert("already exists" + newuID);
-            } else {
-               newuID = '<%-JSON.stringify(patientID) %>';
-               if (newuID != "" && newuID != null) {
-                   setCookie("newuserID", newuID, 30);
-                   alert("new set"+newuID);
-               }
-            }
-        }
-        
-        </script>
 <script>
 $(document).ready(function(){
   
@@ -138,7 +99,7 @@ $(document).ready(function(){
 </script>
 </head>
 
-<body onload="checkCookie()">
+<body>
     <div class="row">
         <div class="dash-column-left col-lg-3 col-md-3">
             <div class="head"></div>
