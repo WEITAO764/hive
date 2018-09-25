@@ -38,7 +38,7 @@ $(document).ready(function(){
   //get booking data
 
  
-  var url = "https://hiveapp.mybluemix.net/bookingData/";
+  var url = "https://hiveapp.mybluemix.net/bookingDataB/";
   var patientID = '<%-JSON.stringify(patientID) %>'; 
   var patientUrl = url.concat(patientID);
 
@@ -61,7 +61,6 @@ $(document).ready(function(){
       
       //
       var docID=element.doctorID;
-
       var str1 = "https://hiveapp.mybluemix.net/doctorInfo/";
       var str2=docID.toString();
       var url = str1.concat(str2);
@@ -70,7 +69,7 @@ $(document).ready(function(){
 
         $.each(data, function(index, elem) {
 
-          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+          $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setbookingID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
         }); 
 
@@ -86,8 +85,11 @@ $(document).ready(function(){
   $.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
 
   $.each(data, function(index, element) {
+
+    
+    var pID = '<%-JSON.stringify(patientID) %>'; 
   
-  $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+')"/></form></li>');
+  $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+pID+')"/></form></li>');
 
 });
 
