@@ -8,15 +8,18 @@ function registerType(){
     }
 }
 
-function setID(dID){   
-   localStorage.setItem("x",dID);
+function setID(dID,pID){   
+   localStorage.setItem("d",dID);
+   localStorage.setItem("p",pID);
 }
-
-function getdoctorID(){
-    document.getElementById("doctorID").value=localStorage.getItem("x");
+function getID(){
+    document.getElementById("patientID").value=localStorage.getItem("p");
+    document.getElementById("doctorID").value=localStorage.getItem("d");
 }
-
-function getbookingID(){
-    document.getElementById("bookingID").value=localStorage.getItem("x");
+function setbookingID(bID){   
+    localStorage.setItem("b",bID);
+ }
+ function getbookingID(){
+    document.getElementById("bookingID").value=localStorage.getItem("b");
 }
 
