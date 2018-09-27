@@ -228,8 +228,8 @@ app.post('/registersubmit', function (req, res) {
     password = encrypt.sha1hash("password");
     email = "tes3@test.com";
 */
-    dateofbirth = "12081994";
-    console.log(registertype);
+    //dateofbirth = "12081994";
+    //console.log(registertype);
     if (registertype === "0")
     //0 means patient and 1 means doctor
     {
@@ -252,15 +252,15 @@ app.post('/registersubmit', function (req, res) {
                         dateofbirth + "','" + phoneno + "','" + email + "')",
                         function (err, rows, fields) {
                             if (!err) {
-                                console.log(rows[0]);
-                                if (rows.length > 0) {
+                                //console.log(rows[0]);
+                                //if (rows.length > 0) {
                                     //Login fine
                                     res.sendFile(__dirname + '/public/backend/dashboard.html');
-                                }
-                                else {
+                                //}
+                                //else {
                                     //Fail
-                                    res.sendFile(__dirname + '/public/backend/register.html');
-                                }
+                                //    res.sendFile(__dirname + '/public/backend/register.html');
+                                //}
                             }
                             else {
                                 //ERROR
