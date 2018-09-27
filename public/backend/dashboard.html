@@ -29,8 +29,6 @@ if(user == 0){
   var uname="Patient";
   var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
   var userID = '<%-JSON.stringify(patientID) %>'; 
-  var uID="element.patientID";
-  
 }
 
   //get user data
@@ -38,6 +36,9 @@ if(user == 0){
   $.getJSON(Url, function(userdata){
 
     $.each(userdata, function(index, element) {
+      if(user == 0){
+        uID =element.patientID;
+      }
       $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
       $('#userID').append(uname+' ID: '+uID);
     });
@@ -46,11 +47,10 @@ if(user == 0){
   //get booking data
 
  
-  var url = "https://hiveapp.mybluemix.net/bookingData/";
-  var patientID = '<%-JSON.stringify(patientID) %>'; 
-  var patientUrl = url.concat(patientID);
+  var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
+  var Url = BookUrl.concat(userID);
 
-  $.getJSON(patientUrl, function(bookdata){
+  $.getJSON(BookUrl, function(bookdata){
 
     $.each(bookdata, function(bookindex, element) {
       
