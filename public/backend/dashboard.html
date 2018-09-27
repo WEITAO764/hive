@@ -30,12 +30,30 @@ if(user == 0){
   var uname="Patient";
   var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
   var userID = '<%-JSON.stringify(patientID) %>'; 
-}
+
+  document.getElementById("doctor-list").style.display="block";
+
+  //get doctor list
+ 
+
+$.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
+
+$.each(data, function(index, element) {
+
+$('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+userID+')"/></form></li>');
+
+});
+
+});
+
+}//end of if
 
 else if(user == 1){
   var uname="Doctor";
   var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
   var userID = '<%-JSON.stringify(doctorID) %>'; 
+
+  document.getElementById("doctor-list").style.display="none";
 }
 
   //get user data
@@ -48,20 +66,6 @@ else if(user == 1){
     });
   }); 
 
-  //get doctor list
-if(user == 0){  
-
-$.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
-
-$.each(data, function(index, element) {
-
-$('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+userID+')"/></form></li>');
-
-});
-
-});
-
-}
 
   //get booking data
 
@@ -129,7 +133,7 @@ $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstna
                 <h4 class="user-fname" id="user-fname"></h4>
                 <div id="userID"></div>
             </div>
-              <ul class="doctor-list">
+              <ul class="doctor-list" id="doctor-list">
                   <h4>Available Doctors</h4>
               </ul>
         </div>
