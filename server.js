@@ -398,7 +398,7 @@ app.post("/payment", function (request, response) {
         response.render(__dirname + '/public/backend/dashboard.html');
     }
 
-    var bookingID = request.body.bookingType;
+    var bookingID = request.body.bookingID;
     //General Information
     var paymentType = request.body.paymentType;
     var ccType = request.body.ccType;
@@ -411,8 +411,9 @@ app.post("/payment", function (request, response) {
     var ptBSB = request.body.ptBSB;
     var ptName = request.body.ptName;
     var ptNumber = request.body.ptNumber;
-    var paymentID = 0;
+    //var paymentID = 0;
     console.log('Prepared data');
+
     con.query("INSERT INTO payments (bookingID,paymentType,ccType,ccName,ccExpiry,ccCVV,ddBSB,ddName," +
         "ddNumber,ptBSB,ptName,ptNumber) VALUES ('" + bookingID + "','" + paymentType + "','" + ccType + "','" +
         ccName + "','" + ccExpiry + "','" + ccCVV + "','" + ddBSB + "','" + ddName + "','" +
@@ -420,13 +421,13 @@ app.post("/payment", function (request, response) {
         function (err, rows, fields) {
             if (!err) {
                 //console.log(rows[0]);
-                paymentID = result.insertId;
-                console.log('Insert payment successful: ID = ' + paymentID);
+                //paymentID = result.insertId;
+                //console.log('Insert payment successful: ID = ' + paymentID);
                 response.render(__dirname + '/public/backend/payment-finished.html');
             }
             else {
                 //ERROR
-                console.log('Database Error');
+                console.log('Database Error' + err.message);
                 response.render(__dirname + '/public/backend/dashboard.html');
             }
         });
