@@ -21,8 +21,10 @@
 <script>
 $(document).ready(function(){
   
- var user = getUser();
- alert(user);
+ 
+var user = localStorage.getItem("user");
+alert(user);
+
   //get user data
 
   var url = "https://hiveapp.mybluemix.net/patientInfo/";
