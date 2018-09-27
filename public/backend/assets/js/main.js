@@ -7,3 +7,28 @@ function registerType(){
         document.getElementById("clinicblock").style.display = "none";
     }
 }
+
+function logintype(){
+    var val=document.getElementById("logintype").value;
+    alert(val);
+    localStorage.setItem(val);
+}
+function getUser(){
+    alert(localStorage.getItem(val));
+}
+
+function setID(dID,pID){   
+   localStorage.setItem("d",dID);
+   localStorage.setItem("p",pID);
+}
+function getID(){
+    document.getElementById("patientID").value=localStorage.getItem("p");
+    document.getElementById("doctorID").value=localStorage.getItem("d");
+}
+function setbookingID(bID){   
+    localStorage.setItem("b",bID);
+ }
+ function getbookingID(){
+    document.getElementById("bookingID").value=localStorage.getItem("b");
+}
+
