@@ -28,6 +28,7 @@ var userID = '<%-JSON.stringify(userID) %>';
 if(user == 0){
   var uname="Patient";
   var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
+  var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
 
   document.getElementById("doctor-list").style.display="block";
 
@@ -49,7 +50,7 @@ $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstna
 else if(user == 1){
   var uname="Doctor";
   var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
-  
+  var BookUrl = "https://hiveapp.mybluemix.net/bookingDataD/";
 
   document.getElementById("doctor-list").style.display="none";
 }
@@ -68,7 +69,7 @@ else if(user == 1){
   //get booking data
 
  
- var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
+ 
   var Url = BookUrl.concat(userID);
 
   $.getJSON(Url, function(bookdata){
