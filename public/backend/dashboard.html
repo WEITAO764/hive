@@ -54,8 +54,9 @@ else if(user == 1){
   try{
   var userID = '<%-JSON.stringify(doctorID) %>'; 
   }
-  catch(err){
-    alert(err);
+  catch(error)
+  {
+    alert("error occured");
   }
 
   document.getElementById("doctor-list").style.display="none";
