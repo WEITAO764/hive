@@ -19,6 +19,15 @@
     <!--favicon-->
     <link rel="shortcut icon" href="../assets/images/favicon.png">
 <script>
+  function start(){
+    try{
+  var userID = '<%-JSON.stringify(doctorID) %>'; 
+  }
+  catch(e)
+  {
+    alert("error occured");
+  }
+  }
 $(document).ready(function(){
   
  
@@ -51,13 +60,7 @@ $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstna
 else if(user == 1){
   var uname="Doctor";
   var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
-  try{
-  var userID = '<%-JSON.stringify(doctorID) %>'; 
-  }
-  catch(e)
-  {
-    alert("error occured");
-  }
+  
 
   document.getElementById("doctor-list").style.display="none";
 }
@@ -125,7 +128,7 @@ else if(user == 1){
 </script>
 </head>
 
-<body>
+<body onload="start();">
     <div class="row">
         <div class="dash-column-left col-lg-3 col-md-3">
             <div class="head"></div>
