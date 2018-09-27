@@ -25,17 +25,21 @@ $(document).ready(function(){
 var user = localStorage.getItem("user");
 alert(user);
 
-  //get user data
-
-  var url = "https://hiveapp.mybluemix.net/patientInfo/";
+if(user == 0){
+  var uname="Patient";
+  var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
   var userID = '<%-JSON.stringify(patientID) %>'; 
-  var userUrl = url.concat(userID);
+  var uID="element.patientID";
+  
+}
 
-  $.getJSON(userUrl, function(userdata){
+  //get user data
+  var Url = InfoUrl.concat(userID);
+  $.getJSON(Url, function(userdata){
 
     $.each(userdata, function(index, element) {
       $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
-      $('#userID').append('Patient ID: '+element.patientID);
+      $('#userID').append(uname+' ID: '+uID);
     });
   }); 
 
