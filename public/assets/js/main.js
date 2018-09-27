@@ -11,10 +11,10 @@ function registerType(){
 function loginType(){
     var val=document.getElementById("logintype").value;
     alert(val);
-    localStorage.setItem(val);
+    localStorage.setItem("user",val);
 }
 function getUser(){
-    alert(localStorage.getItem(val));
+    alert(localStorage.getItem("user"));
 }
 
 function setID(dID,pID){   
