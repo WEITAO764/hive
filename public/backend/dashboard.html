@@ -51,7 +51,12 @@ $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstna
 else if(user == 1){
   var uname="Doctor";
   var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
-  
+  try{
+  var userID = '<%-JSON.stringify(doctorID) %>'; 
+  }
+  catch(err){
+    alert(err);
+  }
 
   document.getElementById("doctor-list").style.display="none";
 }
