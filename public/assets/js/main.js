@@ -8,6 +8,15 @@ function registerType(){
     }
 }
 
+function loginType(){
+    var val=document.getElementById("logintype").value;
+    alert(val);
+    localStorage.setItem(val);
+}
+function getUser(){
+    alert(localStorage.getItem(val));
+}
+
 function setID(dID,pID){   
    localStorage.setItem("d",dID);
    localStorage.setItem("p",pID);
