@@ -25,10 +25,17 @@ $(document).ready(function(){
 var user = localStorage.getItem("user");
 alert(user);
 
+
 if(user == 0){
   var uname="Patient";
   var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
   var userID = '<%-JSON.stringify(patientID) %>'; 
+}
+
+else if(user == 1){
+  var uname="Doctor";
+  var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
+  var userID = '<%-JSON.stringify(doctorID) %>'; 
 }
 
   //get user data
@@ -36,21 +43,33 @@ if(user == 0){
   $.getJSON(Url, function(userdata){
 
     $.each(userdata, function(index, element) {
-      if(user == 0){
-        uID =element.patientID;
-      }
       $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
-      $('#userID').append(uname+' ID: '+uID);
+      $('#userID').append(uname+' ID: '+userID);
     });
   }); 
+
+  //get doctor list
+if(user == 0){  
+
+$.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
+
+$.each(data, function(index, element) {
+
+$('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+userID+')"/></form></li>');
+
+});
+
+});
+
+}
 
   //get booking data
 
  
-  var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
+ var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
   var Url = BookUrl.concat(userID);
 
-  $.getJSON(BookUrl, function(bookdata){
+  $.getJSON(Url, function(bookdata){
 
     $.each(bookdata, function(bookindex, element) {
       
@@ -88,20 +107,7 @@ if(user == 0){
     
   }); 
 
-//get doctor list
 
-  $.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
-
-  $.each(data, function(index, element) {
-
-    
-    var pID = '<%-JSON.stringify(patientID) %>'; 
-  
-  $('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+pID+')"/></form></li>');
-
-});
-
-});
 
 });
  
