@@ -13,11 +13,6 @@ function loginType(){
     alert(val);
     localStorage.setItem("user",val);
 }
-function getUser(){
-    alert(localStorage.getItem("user"));
-    return "user";
-}
-
 function setID(dID,pID){   
    localStorage.setItem("d",dID);
    localStorage.setItem("p",pID);
