@@ -15,6 +15,7 @@ function loginType(){
 }
 function getUser(){
     alert(localStorage.getItem("user"));
+    return "user";
 }
 
 function setID(dID,pID){   
