@@ -21,9 +21,7 @@
 <script>
 $(document).ready(function(){
   
-  alert('<%-JSON.stringify(doctorID) %>');
-   
-  }
+
   //get user data
 
   var url = "https://hiveapp.mybluemix.net/patientInfo/";
@@ -104,7 +102,7 @@ $(document).ready(function(){
 </script>
 </head>
 
-<body>
+<body onload="getUser();">
     <div class="row">
         <div class="dash-column-left col-lg-3 col-md-3">
             <div class="head"></div>
