@@ -114,7 +114,7 @@ app.post('/loginsubmit', function (req, res) {
 
                     res.render(__dirname + '/public/backend/dashboard.html', {
                         username: username,
-                        patientID: patientID,
+                        userID: patientID,
                         firstname: firstname,
                         lastname: lastname,
                         address: address,
@@ -154,7 +154,7 @@ app.post('/loginsubmit', function (req, res) {
                     var email = rows[0].email;
 
                     res.render(__dirname + '/public/backend/dashboard.html', {
-                        username: username, doctorID: doctorID, firstname: firstname,
+                        username: username, userID: doctorID, firstname: firstname,
                         lastname: lastname, dateofbirth: dateofbirth, phoneno: phoneno, email: email
                     });
                 }
