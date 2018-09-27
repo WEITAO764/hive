@@ -182,6 +182,7 @@ body{
 /*--dashboard--*/
 .dash-column-left{
     background-color: rgba(0,0,0,0.8);
+    height:700px;
 }
 .user-info{
     font-weight: bold;
