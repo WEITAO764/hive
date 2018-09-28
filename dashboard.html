@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HIVE - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css" />
+    <script src="../assets/js/main.js"></script>
+
+    <!--bootstrap--> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+     <!--font awsome-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="../assets/images/favicon.png">
+<script>
+$(document).ready(function(){
+   
+var user = localStorage.getItem("user");
+var userID = '<%-JSON.stringify(userID) %>'; 
+
+if(user == 0){
+  var uname="Patient";
+  var InfoUrl= "https://hiveapp.mybluemix.net/patientInfo/";
+  var BookUrl = "https://hiveapp.mybluemix.net/bookingData/";
+
+  document.getElementById("doctor-list").style.display="block";
+
+  //get doctor list
+
+$.getJSON("https://hiveapp.mybluemix.net/doctorList", function(data){
+
+$.each(data, function(index, element) {
+
+$('ul').append('<li class="row"><div class="col-lg-8 col-md-8">'+element.firstname+' '+element.lastname+'</div><form class="col-md-4 col-lg-4" action="/booking" method="GET"><input type="submit" value="book" class="btn btn-sm btn-primary" onclick="setID('+element.doctorID+','+userID+')"/></form></li>');
+
+});
+
+});
+
+  //get booking data for patient
+
+ 
+ 
+ var Url = BookUrl.concat(userID);
+
+$.getJSON(Url, function(bookdata){
+  $('thead').append('<th>Booking ID</th><th>Booking Type</th><th>TimeDate (HHMMDDMMYYYY)</th><th>Booking Note</th><th>Doctor</th><th></th><th></th></tr>');
+  $.each(bookdata, function(bookindex, element) {
+    
+    var booktypename="";
+    var booktype=element.bookingType;
+    
+    if(booktype==1){
+      booktypename="Standard";
+    }
+    else if(booktype==2){
+      booktypename="Long";
+    }
+    else{
+      booktypename="Special";
+    }
+    
+    //
+    var docID=element.doctorID;
+    var str1 = "https://hiveapp.mybluemix.net/doctorInfo/";
+    var str2=docID.toString();
+    var url = str1.concat(str2);
+    
+    $.getJSON(url, function(data){
+
+     $.each(data, function(index, elem) {
+       
+        $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setbookingID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+
+      }); 
+
+    }); 
+
+    //
+  });
+  
+}); 
+
+}//end of if
+
+else if(user == 1){
+  var uname="Doctor";
+  var InfoUrl= "https://hiveapp.mybluemix.net/doctorInfo/";
+  var BookUrl = "https://hiveapp.mybluemix.net/bookingDataD/";
+
+  document.getElementById("doctor-list").style.display="none";
+
+  //get booking data for doctor
+
+ 
+ 
+ var Url = BookUrl.concat(userID);
+
+$.getJSON(Url, function(bookdata){
+  $('thead').append('<th>Booking ID</th><th>Booking Type</th><th>TimeDate (HHMMDDMMYYYY)</th><th>Booking Note</th><th>Patient</th><th></th></tr>');
+     
+
+  $.each(bookdata, function(bookindex, element) {
+    
+    var booktypename="";
+    var booktype=element.bookingType;
+    
+    if(booktype==1){
+      booktypename="Standard";
+    }
+    else if(booktype==2){
+      booktypename="Long";
+    }
+    else{
+      booktypename="Special";
+    }
+    
+    //
+    var patID=element.patientID;
+    var str1 = "https://hiveapp.mybluemix.net/patientInfo/";
+    var str2=patID.toString();
+    var url = str1.concat(str2);
+    
+    $.getJSON(url, function(data){
+       
+      $.each(data, function(index, elem) {
+         $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
+
+      }); 
+
+    }); 
+
+    //
+  });
+  
+});
+}//end of else if
+
+  //get user data
+  var Url = InfoUrl.concat(userID);
+  $.getJSON(Url, function(userdata){
+
+    $.each(userdata, function(index, element) {
+      $('#user-fname').append('Welcome <span class="text-uppercase">'+element.firstname+'</span');
+      $('#userID').append(uname+' ID: '+userID);
+    });
+  }); 
+
+
+
+
+
+
+});
+ 
+ 
+</script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="dash-column-left col-lg-3 col-md-3">
+            <div class="head"></div>
+            <div class="head"></div>
+            <div class="logo">
+              <a href="#">
+                <img src="../assets/images/logo.png">
+              </a>
+            </div>
+            <div class="user-info">
+                <h4 class="user-fname" id="user-fname"></h4>
+                <div id="userID"></div>
+            </div>
+              <ul class="doctor-list" id="doctor-list">
+                  <h4>Available Doctors</h4>
+              </ul>
+        </div>
+        <!--end of left column -->
+        <div class="dash-column-right col-md-9 col-lg-9">
+            <h2 class="heading">My Bookings</h2>
+              <table class="table table-bordered table-striped booking-table" id="booking-table">
+                
+                <thead>
+                    
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>     
+    </div>
+     
+
+        
+</body>
+</html>
+
+
+		
+   
+	
+ 
+	
