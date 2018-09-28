@@ -10,7 +10,6 @@ function registerType(){
 
 function loginType(){
     var val=document.getElementById("logintype").value;
-    alert(val);
     localStorage.setItem("user",val);
 }
 function setID(dID,pID){   
