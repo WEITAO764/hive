@@ -76,7 +76,7 @@ $.getJSON(Url, function(bookdata){
 
      $.each(data, function(index, elem) {
        
-        $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setbookingID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn"><a href="local.html">Join Chat</a></button></td></tr>');
+        $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-sm btn-warning paynow-btn" onclick="setbookingID('+element.bookingID+')"; ><a href="payment.html">Pay Now</a></button></td></td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
       }); 
 
@@ -130,7 +130,7 @@ $.getJSON(Url, function(bookdata){
     $.getJSON(url, function(data){
        
       $.each(data, function(index, elem) {
-         $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-primary btn-sm" id="joinchat-btn"><a href="remote.html">Join Chat</a></button></td></tr>');
+         $('tbody').append('<tr><td>'+element.bookingID+'</td><td>'+booktypename+'</td><td>'+element.bookingDatetime+'</td><td>'+element.bookingNote+'</td><td>'+elem.firstname+' '+elem.lastname+'</td><td><button class="btn btn-primary btn-sm" id="joinchat-btn" disabled>Join Chat</button></td></tr>');
 
       }); 
 
