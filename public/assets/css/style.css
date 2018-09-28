@@ -220,11 +220,11 @@ body{
     background: grey;
     text-align: center;
 }
-.paynow-btn a{
+.table-btn a{
     color:#fff;
     text-decoration: none;
 }
-.paynow-btn a:hover{
+.table-btn a:hover{
     color:#fff;
     text-decoration: none;
 }
