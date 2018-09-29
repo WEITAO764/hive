@@ -255,7 +255,7 @@ app.post('/registersubmit', function (req, res) {
                                 //console.log(rows[0]);
                                 //if (rows.length > 0) {
                                     //Login fine
-                                    res.sendFile(__dirname + '/public/backend/dashboard.html');
+                                    res.sendFile(__dirname + '/public/backend/login.html');
                                 //}
                                 //else {
                                     //Fail
@@ -317,7 +317,7 @@ app.post('/registersubmit', function (req, res) {
                                 dateofbirth + "','" + phoneno + "','" + email + "','" + clinicID + "')",
                                 function (err, result, fields) {
                                     if (!err) {
-                                        res.sendFile(__dirname + '/public/backend/dashboard.html');
+                                        res.sendFile(__dirname + '/public/backend/login.html');
                                     }
                                     else {
                                         //ERROR
