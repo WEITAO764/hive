@@ -12,7 +12,9 @@
     "csurf": "^1.9.0",
     "cookie-parser": "^1.4.3",
     "client-sessions": "^0.8.0",
-    "ejs": "^2.6.1"
+    "ejs": "^2.6.1",
+    "dotenv": "^4.0.0",
+    "twilio": "^3.0.0"
   },
   "main": "server.js",
   "scripts": {
@@ -21,5 +23,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/WEITAO764/hive.git"
+  },
+  "devDependencies": {
+    "jest": "^19.0.2",
+    "jsonwebtoken": "^7.4.0"
   }
 }

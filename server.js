@@ -10,6 +10,7 @@
 /**
  * @EXPRESS
  */
+require('dotenv').load();
 var express = require("express"),
     app = express();
 var ejs = require('ejs');
@@ -31,6 +32,7 @@ var sessions = require("client-sessions");
  */
 var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
+const tokenGenerator = require('./library/token_generator');
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * @Configuration
@@ -67,6 +69,11 @@ con.connect();
 /**
  * @Routes
  */
+app.get('/token', function (request, response) {
+    const identity = request.query.identity || 'identity';
+    const room = request.query.room;
+    response.send(tokenGenerator(identity, room));
+});
 /*
 *  Login Part
 *  Note: The default backend should check session status, if fail (unlogin), then should go to here.
