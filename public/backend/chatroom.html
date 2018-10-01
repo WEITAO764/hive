@@ -6,6 +6,8 @@
     <title>Chat room</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="//media.twiliocdn.com/sdk/js/video/releases/2.0.0-beta1/twilio-video.min.js"></script>
+    <script src="VideoComponent.js"></script>
+    <script src="app.js"></script>
     <script>
       $(document).ready(function(){
 
@@ -142,7 +144,7 @@ room.disconnect();
     </script>
 </head>
 <body>
-    <form action="/token" method="GET">
+    <form action="/token" method="POST">
         <input type="submit" value="join chat"/>
     </form>
     <div id="remote-media-div" style="width:800px;height:800px; border:1px solid;">
